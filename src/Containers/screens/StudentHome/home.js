@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+  Image,
+} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Card, SearchBar } from '@rneui/themed'
 import * as Progress from 'react-native-progress'
@@ -10,9 +17,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
+import { useSelector } from 'react-redux'
 // import NavTab from '../screens/nav_tab';
 
 const StudentHome = ({ navigation }) => {
+  const userEmail = useSelector(store => store.user.email)
+  const userName = useSelector(store => store.user.name)
+  const userPhoto = useSelector(store => store.user.photo)
   return (
     <ScrollView style={styles.responsiveBox}>
       <Card
@@ -21,8 +32,8 @@ const StudentHome = ({ navigation }) => {
         borderRadius={5}
         containerStyle={{ backgroundColor: '#27BC7F', margin: 0, padding: 0 }}
       >
-        <Card.Image
-          source={require('../../../Assets/Images/avatar.jpeg')}
+        <Image
+          source={{ uri: userPhoto }}
           style={{
             width: 50,
             height: 50,
@@ -49,7 +60,7 @@ const StudentHome = ({ navigation }) => {
             fontSize: 16,
           }}
         >
-          Jyoti Jha
+          {userName}
         </Text>
         <Card
           height={30}

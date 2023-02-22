@@ -10,19 +10,22 @@ import {
   Dimensions,
   SafeAreaView,
 } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
-import { Card, SearchBar } from '@rneui/themed'
+import { launchImageLibrary, launchCamera } from 'react-native-image-picker'
 import { Button, Dialog, Divider } from '@rneui/base'
+// import PhotoUpload from 'react-native-photo-upload'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
+import { addUser } from '@/Store/userSlice'
+import { useDispatch } from 'react-redux'
 
 const SignupEmail = ({ navigation }) => {
   const [authenticated, setAutheticated] = useState(false)
+  const [name, setName] = React.useState('')
+  const [photo, setPhoto] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [confirmpassword, setConfirmpassword] = React.useState('')
-  // Set an initializing state whilst Firebase connects
-  const [profileImage, setProfileImage] = useState('')
+  const dispatch = useDispatch()
 
   const saveData = (registered_email, name, photo, uid) => {
     firestore()
@@ -38,16 +41,45 @@ const SignupEmail = ({ navigation }) => {
       })
   }
 
-  const SignUp = async (email, password, confirmpassword) => {
+  const chooseImage = () => {
+    let options = {
+      storageOptions: {
+        path: 'images',
+        mediaType: 'photo',
+      },
+      includeBase64: true,
+    }
+
+    launchImageLibrary(options, response => {
+      // console.log('Response = ', response)
+      console.log(response)
+      if (response.didCancel) {
+        console.log('User cancelled image picker')
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error)
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton)
+      } else {
+        const source = { uri: response.assets[0].uri }
+        setPhoto(source.uri)
+        console.log(source)
+      }
+    })
+  }
+
+  const SignUp = async (email, name, photo, password, confirmpassword) => {
     try {
       if (password === confirmpassword) {
         const res = await auth().createUserWithEmailAndPassword(email, password)
+        // res.user.displayName = name
         console.log(res)
-        saveData(
-          res.user.email,
-          res.user.displayName,
-          res.user.photoURL,
-          res.user.uid,
+        saveData(res.user.email, name, photo, res.user.uid)
+        dispatch(
+          addUser({
+            email: res.user.email,
+            name: name,
+            photo: photo,
+          }),
         )
         navigation.navigate('StudentHome')
       } else {
@@ -65,7 +97,7 @@ const SignupEmail = ({ navigation }) => {
       <ScrollView horizontal>
         <View>
           <Image
-            source={require('../../../Assets/Images/logo.jpeg')}
+            source={require('../../../Assets/Images/logo.png')}
             style={{
               width: 70,
               height: 70,
@@ -103,6 +135,7 @@ const SignupEmail = ({ navigation }) => {
                 fontFamily: 'Roboto',
               }}
             >
+              {' '}
               Studies
             </Text>
           </Text>
@@ -134,6 +167,39 @@ const SignupEmail = ({ navigation }) => {
       >
         Join GRIT Studies
       </Text>
+      <Button
+        type="outlined"
+        titleStyle={{ color: 'white', fontSize: 15 }}
+        buttonStyle={{
+          height: 100,
+          width: 100,
+          alignContent: 'center',
+          margin: 0,
+          flex: 1,
+          marginTop: 30,
+          paddingLeft: 0,
+          marginLeft: 120,
+          backgroundColor: '#0B774B',
+          borderRadius: 50,
+        }}
+        onPress={() => {
+          chooseImage()
+        }}
+      >
+        Upload Image
+      </Button>
+      <SafeAreaView marginTop={10}>
+        <TextInput
+          style={styles.input}
+          placeholder="Name"
+          value={name}
+          onChangeText={txt => {
+            setName(txt)
+          }}
+          placeholderTextColor={'#0B774B'}
+          backgroundColor="#F9FFFC"
+        />
+      </SafeAreaView>
       <SafeAreaView marginTop={10}>
         <TextInput
           style={styles.input}
@@ -187,7 +253,7 @@ const SignupEmail = ({ navigation }) => {
           borderRadius: 12,
         }}
         onPress={() => {
-          SignUp(email, password, confirmpassword)
+          SignUp(email, name, photo, password, confirmpassword)
         }}
       >
         Sign up

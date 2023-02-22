@@ -26,7 +26,7 @@ const LoginFourth = ({ navigation }) => {
       <ScrollView horizontal>
         <View>
           <Image
-            source={require('../../../Assets/Images/logo.jpeg')}
+            source={require('../../../Assets/Images/logo.png')}
             style={{
               width: 70,
               height: 70,

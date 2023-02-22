@@ -17,12 +17,16 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin'
+import { addUser } from '@/Store/userSlice'
+import { useDispatch } from 'react-redux'
+
 // import {AsyncStorage} from 'react-native';
 
 const LoginFirst = ({ navigation }) => {
   const [authenticated, setAutheticated] = useState(false)
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
+  const dispatch = useDispatch()
   // Set an initializing state whilst Firebase connects
   const [profileImage, setProfileImage] = useState('')
 
@@ -62,6 +66,13 @@ const LoginFirst = ({ navigation }) => {
       const res = await auth().signInWithEmailAndPassword(email, password)
       console.log('Signed-In')
       console.log(res)
+      dispatch(
+        addUser({
+          email: res.user.email,
+          name: res.user.displayName,
+          photo: res.user.photoURL,
+        }),
+      )
       navigation.navigate('StudentHome')
     } catch (error) {
       console.log(error.code)
@@ -99,6 +110,13 @@ const LoginFirst = ({ navigation }) => {
         userInfo.user.photo,
         userInfo.user.id,
       )
+      dispatch(
+        addUser({
+          email: userInfo.user.email,
+          name: userInfo.user.name,
+          photo: userInfo.user.photo,
+        }),
+      )
       navigation.navigate('StudentHome')
       return auth().signInWithCredential(googleCredential)
     } catch (error) {
@@ -129,7 +147,7 @@ const LoginFirst = ({ navigation }) => {
       <ScrollView horizontal>
         <View>
           <Image
-            source={require('../../../Assets/Images/logo.jpeg')}
+            source={require('../../../Assets/Images/logo.png')}
             style={{
               width: 70,
               height: 70,
@@ -165,8 +183,10 @@ const LoginFirst = ({ navigation }) => {
                 fontSize: 30,
                 fontWeight: 'bold',
                 fontFamily: 'Roboto',
+                marginLeft: 200,
               }}
             >
+              {' '}
               Studies
             </Text>
           </Text>

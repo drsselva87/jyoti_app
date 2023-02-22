@@ -16,7 +16,7 @@ const Splash = ({ navigation }) => {
     <ScrollView contentContainerStyle={styles.container}>
       <View>
         <Image
-          source={require('../../../Assets/Images/logo.jpeg')}
+          source={require('../../../Assets/Images/logo.png')}
           style={{ width: 200, height: 200, marginTop: 0 }}
         />
       </View>

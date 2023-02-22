@@ -5,6 +5,6 @@
  */
 export default function () {
   return {
-    logo: require('@/Assets/Images/logo.jpeg'),
+    logo: require('@/Assets/Images/logo.png'),
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
-import { Avatar, Surface, Button } from '@react-native-material/core'
-import { Card } from '@rneui/themed'
+import { Button } from '@rneui/base'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -9,7 +8,7 @@ import {
 
 const EducatorOrStudent = ({ navigation }) => {
   return (
-    <ScrollView contentContainerStyle={styles.responsiveBox}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View
         style={{
           display: 'flex',
@@ -20,7 +19,7 @@ const EducatorOrStudent = ({ navigation }) => {
         }}
       >
         <Image
-          source={require('../../../Assets/Images/logo.jpeg')}
+          source={require('../../../Assets/Images/logo.png')}
           style={{ width: 200, height: 200, marginTop: 0 }}
         />
         <Text
@@ -54,13 +53,13 @@ const EducatorOrStudent = ({ navigation }) => {
               fontFamily: 'Roboto',
             }}
           >
+            {' '}
             Studies
           </Text>
         </Text>
         <Text>Select Your Choice</Text>
         <Button
-          title="Student"
-          style={{
+          buttonStyle={{
             backgroundColor: '#0B774B',
             width: 300,
             height: 50,
@@ -69,10 +68,12 @@ const EducatorOrStudent = ({ navigation }) => {
             paddingVertical: 7,
           }}
           onPress={() => navigation.navigate('Onboarding_First')}
-        />
+        >
+          {/* <Image source={require('../../../Assets/Images/student.jpeg')}/> */}
+          Student
+        </Button>
         <Button
-          title="Educator"
-          style={{
+          buttonStyle={{
             backgroundColor: '#0B774B',
             width: 300,
             height: 50,
@@ -80,7 +81,14 @@ const EducatorOrStudent = ({ navigation }) => {
             paddingVertical: 7,
           }}
           onPress={() => navigation.navigate('EducatorHome')}
-        />
+        >
+          {/* <Image
+            source={require('../../../Assets/Images/tutor_button.png')}
+            height={5}
+            width={5}
+          /> */}
+          Educator
+        </Button>
       </View>
     </ScrollView>
   )
@@ -93,6 +101,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     paddingRight: 10,
+    height: 700,
   },
   linearGradient: {
     padding: 10,
