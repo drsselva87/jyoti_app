@@ -36,7 +36,7 @@ const Dashboard = ({ navigation }) => {
         <View
           style={{ width: wp('100%'), marginLeft: wp('5%'), marginTop: 10 }}
         >
-          <Text>Students Joined</Text>
+          <Text style={{ color: 'black' }}>Students Joined</Text>
           <LineChart
             data={{
               labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -82,14 +82,19 @@ const Dashboard = ({ navigation }) => {
               justifyContent: 'space-between',
             }}
           >
-            <Text style={{ marginLeft: wp('5%') }}>Attendance Details</Text>
-            <Text style={{ marginLeft: wp('5%') }}>View All</Text>
+            <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
+              Attendance Details
+            </Text>
+            <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
+              View All
+            </Text>
           </View>
           <View
             style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-between',
+              justifyContent: 'flex-start',
+              paddingRight: 10,
             }}
           >
             <Surface
@@ -108,8 +113,8 @@ const Dashboard = ({ navigation }) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <Text>Mentors</Text>
-                <Text>View all</Text>
+                <Text style={{ color: 'black' }}>Mentors</Text>
+                <Text style={{ color: 'black' }}>View all</Text>
               </View>
               <Image
                 style={{ margin: 20 }}
@@ -122,8 +127,8 @@ const Dashboard = ({ navigation }) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <Text>Total Teachers</Text>
-                <Text>108</Text>
+                <Text style={{ color: 'black' }}>Total Teachers</Text>
+                <Text style={{ color: 'black' }}>108</Text>
               </View>
               <View
                 style={{
@@ -132,8 +137,8 @@ const Dashboard = ({ navigation }) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <Text>Present</Text>
-                <Text>104</Text>
+                <Text style={{ color: 'black' }}>Present</Text>
+                <Text style={{ color: 'black' }}>104</Text>
               </View>
               <View
                 style={{
@@ -172,8 +177,8 @@ const Dashboard = ({ navigation }) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <Text>Mentors</Text>
-                <Text>View all</Text>
+                <Text style={{ color: 'black' }}>Mentors</Text>
+                <Text style={{ color: 'black' }}>View all</Text>
               </View>
               <Image
                 style={{ margin: 20 }}
@@ -186,8 +191,8 @@ const Dashboard = ({ navigation }) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <Text>Total Teachers</Text>
-                <Text>108</Text>
+                <Text style={{ color: 'black' }}>Total Teachers</Text>
+                <Text style={{ color: 'black' }}>108</Text>
               </View>
               <View
                 style={{
@@ -196,8 +201,8 @@ const Dashboard = ({ navigation }) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <Text>Present</Text>
-                <Text>104</Text>
+                <Text style={{ color: 'black' }}>Present</Text>
+                <Text style={{ color: 'black' }}>104</Text>
               </View>
               <View
                 style={{
@@ -229,8 +234,12 @@ const Dashboard = ({ navigation }) => {
                 justifyContent: 'space-between',
               }}
             >
-              <Text style={{ marginLeft: wp('5%') }}>Recent Transaction</Text>
-              <Text style={{ marginLeft: wp('5%') }}>View all</Text>
+              <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
+                Recent Transaction
+              </Text>
+              <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
+                View all
+              </Text>
             </View>
             <ScrollView>
               <Surface
@@ -238,7 +247,7 @@ const Dashboard = ({ navigation }) => {
                   width: wp('100%'),
                   height: 80,
                   padding: 10,
-                  marginLeft: wp('5%'),
+                  marginLeft: wp('1%'),
                 }}
               >
                 <View style={{ display: 'flex', flexDirection: 'row' }}>
@@ -249,7 +258,7 @@ const Dashboard = ({ navigation }) => {
                     <Text style={{ color: 'black' }}>
                       Paid to Syndra Thomas
                     </Text>
-                    <Text>12:48 am, 2 days ago</Text>
+                    <Text style={{ color: 'black' }}>12:48 am, 2 days ago</Text>
                   </View>
                   <Text
                     style={{
@@ -268,7 +277,7 @@ const Dashboard = ({ navigation }) => {
                   width: wp('100%'),
                   height: 80,
                   padding: 10,
-                  marginLeft: wp('5%'),
+                  marginLeft: wp('1%'),
                 }}
               >
                 <View style={{ display: 'flex', flexDirection: 'row' }}>
@@ -279,7 +288,7 @@ const Dashboard = ({ navigation }) => {
                     <Text style={{ color: 'black' }}>
                       Paid to Syndra Thomas
                     </Text>
-                    <Text>12:48 am, 2 days ago</Text>
+                    <Text style={{ color: 'black' }}>12:48 am, 2 days ago</Text>
                   </View>
                   <Text
                     style={{
@@ -318,6 +327,7 @@ const styles = StyleSheet.create({
   },
   responsiveBox: {
     width: wp('100%'),
+    backgroundColor: 'white',
     flexDirection: 'column',
   },
 })

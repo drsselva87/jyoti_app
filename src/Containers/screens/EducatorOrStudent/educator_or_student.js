@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
-import { Button } from '@rneui/base'
+import { Button } from '@react-native-material/core'
+import Icon from 'react-native-vector-icons/Ionicons'
+import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
+import { color } from 'react-native-reanimated'
 
 const EducatorOrStudent = ({ navigation }) => {
   return (
@@ -59,7 +62,9 @@ const EducatorOrStudent = ({ navigation }) => {
         </Text>
         <Text>Select Your Choice</Text>
         <Button
-          buttonStyle={{
+          title="Student"
+          leading={<Icon name="school" style={{ color: 'white' }} />}
+          style={{
             backgroundColor: '#0B774B',
             width: 300,
             height: 50,
@@ -68,12 +73,13 @@ const EducatorOrStudent = ({ navigation }) => {
             paddingVertical: 7,
           }}
           onPress={() => navigation.navigate('Onboarding_First')}
-        >
-          {/* <Image source={require('../../../Assets/Images/student.jpeg')}/> */}
-          Student
-        </Button>
+        />
         <Button
-          buttonStyle={{
+          title="Educator"
+          leading={
+            <FontIcon name="chalkboard-teacher" style={{ color: 'white' }} />
+          }
+          style={{
             backgroundColor: '#0B774B',
             width: 300,
             height: 50,
@@ -81,14 +87,7 @@ const EducatorOrStudent = ({ navigation }) => {
             paddingVertical: 7,
           }}
           onPress={() => navigation.navigate('EducatorHome')}
-        >
-          {/* <Image
-            source={require('../../../Assets/Images/tutor_button.png')}
-            height={5}
-            width={5}
-          /> */}
-          Educator
-        </Button>
+        />
       </View>
     </ScrollView>
   )
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     paddingRight: 10,
-    height: 700,
+    height: hp('100%'),
   },
   linearGradient: {
     padding: 10,

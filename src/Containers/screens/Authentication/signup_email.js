@@ -10,6 +10,7 @@ import {
   Dimensions,
   SafeAreaView,
 } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker'
 import { Button, Dialog, Divider } from '@rneui/base'
 // import PhotoUpload from 'react-native-photo-upload'
@@ -70,18 +71,32 @@ const SignupEmail = ({ navigation }) => {
   const SignUp = async (email, name, photo, password, confirmpassword) => {
     try {
       if (password === confirmpassword) {
-        const res = await auth().createUserWithEmailAndPassword(email, password)
-        // res.user.displayName = name
-        console.log(res)
-        saveData(res.user.email, name, photo, res.user.uid)
-        dispatch(
-          addUser({
-            email: res.user.email,
-            name: name,
-            photo: photo,
-          }),
-        )
-        navigation.navigate('StudentHome')
+        const res = await auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then(() => {
+            auth()
+              .currentUser.sendEmailVerification()
+              .then(() => {
+                console.log('Verification email sent!')
+                console.log(res.user.emailVerified)
+                // res.user.displayName = name
+                console.log(res)
+              })
+              .catch(error => {
+                console.log('Please enter valid email id')
+              })
+              .then(() => {
+                saveData(res.user.email, name, photo, res.user.uid)
+                dispatch(
+                  addUser({
+                    email: res.user.email,
+                    name: name,
+                    photo: photo,
+                  }),
+                )
+                navigation.navigate('StudentHome')
+              })
+          })
       } else {
         alert(
           'Please make sure your confirm password is same as your current password',
@@ -167,27 +182,48 @@ const SignupEmail = ({ navigation }) => {
       >
         Join GRIT Studies
       </Text>
-      <Button
-        type="outlined"
-        titleStyle={{ color: 'white', fontSize: 15 }}
-        buttonStyle={{
-          height: 100,
-          width: 100,
-          alignContent: 'center',
-          margin: 0,
-          flex: 1,
-          marginTop: 30,
-          paddingLeft: 0,
-          marginLeft: 120,
-          backgroundColor: '#0B774B',
-          borderRadius: 50,
-        }}
-        onPress={() => {
-          chooseImage()
-        }}
-      >
-        Upload Image
-      </Button>
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        {photo ? (
+          <Pressable
+            onPress={() => {
+              chooseImage()
+            }}
+          >
+            <Image
+              source={{ uri: photo }}
+              style={{
+                width: 100,
+                height: 100,
+                borderRadius: 100,
+              }}
+            />
+            <Icon
+              name="add-a-photo"
+              style={{
+                fontSize: 30,
+                color: 'grey',
+                marginLeft: 70,
+                marginTop: -30,
+              }}
+            />
+          </Pressable>
+        ) : (
+          <Button
+            buttonStyle={{
+              height: 100,
+              width: 100,
+              backgroundColor: '#0B774B',
+              borderRadius: 50,
+            }}
+            onPress={() => {
+              chooseImage()
+            }}
+          >
+            <Icon name="add-a-photo" style={{ fontSize: 30, color: 'white' }} />
+            Upload Image
+          </Button>
+        )}
+      </View>
       <SafeAreaView marginTop={10}>
         <TextInput
           style={styles.input}
@@ -223,7 +259,6 @@ const SignupEmail = ({ navigation }) => {
           }}
           placeholderTextColor={'#0B774B'}
           backgroundColor="#F9FFFC"
-          color="black"
         />
       </SafeAreaView>
       <SafeAreaView marginTop={10}>
@@ -258,88 +293,6 @@ const SignupEmail = ({ navigation }) => {
       >
         Sign up
       </Button>
-      {/*
-      <Divider
-        orientation="horizontal"
-        color="#CDEFE9"
-        width={1}
-        style={{ width: '83%', marginLeft: 30, marginTop: 30 }}
-      />
-      <Text
-        style={{
-          color: '#0B774B',
-          marginLeft: 160,
-          marginTop: -10,
-          backgroundColor: 'white',
-          padding: 2,
-          width: 27,
-        }}
-      >
-        OR
-      </Text>
-      <Button
-        type="outline"
-        icon={
-          <Image
-            source={require('../../../Assets/Images/google.jpeg')}
-            style={{ width: 20, height: 20 }}
-          />
-        }
-        titleStyle={{ color: '#0B774B', fontSize: 15, margin: 5 }}
-        buttonStyle={{
-          height: 50,
-          width: 300,
-          margin: 0,
-          flex: 1,
-          marginTop: 20,
-          paddingLeft: 0,
-          marginLeft: 30,
-          backgroundColor: 'white',
-          borderRadius: 12,
-          borderColor: '#0B774B',
-        }}
-      >
-        Continue with Google
-      </Button>
-      <Button
-        type="outline"
-        icon={<Icon name="logo-apple" size={20} color="black" />}
-        titleStyle={{ color: '#0B774B', fontSize: 15, margin: 5 }}
-        buttonStyle={{
-          height: 50,
-          width: 300,
-          margin: 0,
-          flex: 1,
-          marginTop: 10,
-          paddingTop: 2,
-          paddingLeft: 0,
-          marginLeft: 30,
-          backgroundColor: 'white',
-          borderRadius: 12,
-          borderColor: '#0B774B',
-        }}
-      >
-        Continue with Apple
-      </Button>
-      <Button
-        type="outline"
-        icon={<Icon name="logo-facebook" size={20} color="#3F51B5" />}
-        titleStyle={{ color: '#0B774B', fontSize: 15, margin: 5 }}
-        buttonStyle={{
-          height: 50,
-          width: 300,
-          margin: 0,
-          flex: 1,
-          marginTop: 10,
-          marginLeft: 30,
-          paddingLeft: 30,
-          backgroundColor: 'white',
-          borderRadius: 12,
-          borderColor: '#0B774B',
-        }}
-      >
-        Continue with Facebook
-      </Button> */}
       <Text
         style={{
           color: '#0B774B',
@@ -397,6 +350,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 15,
     borderWidth: 1,
+    color: 'black',
     borderColor: '#CDEFE9',
     marginLeft: 30,
     padding: 10,

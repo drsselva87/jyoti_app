@@ -18,6 +18,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
 import { useSelector } from 'react-redux'
+import { color } from 'react-native-reanimated'
 // import NavTab from '../screens/nav_tab';
 
 const StudentHome = ({ navigation }) => {
@@ -33,7 +34,11 @@ const StudentHome = ({ navigation }) => {
         containerStyle={{ backgroundColor: '#27BC7F', margin: 0, padding: 0 }}
       >
         <Image
-          source={{ uri: userPhoto }}
+          source={
+            userPhoto
+              ? { uri: userPhoto }
+              : require('../../../Assets/Images/avatar.jpeg')
+          }
           style={{
             width: 50,
             height: 50,
@@ -72,7 +77,11 @@ const StudentHome = ({ navigation }) => {
             width: wp('7%'),
           }}
         >
-          <Icon name="notifications-outline" size={27} />
+          <Icon
+            name="notifications-outline"
+            style={{ color: 'black' }}
+            size={27}
+          />
         </Card>
         <SearchBar
           placeholder="Looking for a course?"
@@ -127,9 +136,28 @@ const StudentHome = ({ navigation }) => {
           backgroundColor="#FFE1CF"
         />
       </Card>
-      <Text style={{ color: '#343434', marginTop: 20, marginLeft: wp('7%') }}>
-        Top Categories
-      </Text>
+      <View
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
+      >
+        <Text style={{ color: '#343434', marginTop: 20 }}>Top Categories</Text>
+        <Text
+          style={{
+            color: 'orange',
+          }}
+          onPress={() => navigation.navigate('HomeSearchResult')}
+        >
+          See all
+        </Text>
+      </View>
       <ScrollView horizontal style={{ marginTop: 10 }}>
         <View>
           <Button
@@ -252,23 +280,23 @@ const StudentHome = ({ navigation }) => {
           </Button>
         </View>
       </ScrollView>
-      <View style={{ flexDirection: 'row', width: 750 }}>
-        <Text
-          style={{
-            color: '#343434',
-            marginTop: 10,
-            marginLeft: wp('7%'),
-            flex: 1,
-          }}
-        >
-          Recommended Course For You
-        </Text>
+      <View
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
+      >
+        <Text style={{ color: 'black' }}>Recommended Course For You</Text>
         <Pressable
           style={{
             color: 'orange',
             marginTop: 10,
-            paddingLeft: wp('25%'),
-            flex: 2,
           }}
         >
           <Text
@@ -316,6 +344,7 @@ const StudentHome = ({ navigation }) => {
                     fontSize: 13,
                     top: 5,
                     fontWeight: 'bold',
+                    color: 'black',
                   }}
                 >
                   {items.course_name}
@@ -326,6 +355,7 @@ const StudentHome = ({ navigation }) => {
                     marginLeft: 105,
                     fontSize: 10,
                     marginTop: 9,
+                    color: 'black',
                   }}
                 >
                   {items.published_by}
@@ -350,13 +380,22 @@ const StudentHome = ({ navigation }) => {
           </View>
         ))}
       </ScrollView>
-      <View style={{ flexDirection: 'row', width: 700 }}>
+      <View
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
+      >
         <Text
           style={{
             color: '#343434',
             marginTop: 20,
-            marginLeft: wp('7%'),
-            flex: 1,
           }}
         >
           Our Best Instructors
@@ -366,7 +405,6 @@ const StudentHome = ({ navigation }) => {
             color: 'orange',
             marginTop: 20,
             paddingLeft: wp('28%'),
-            flex: 2,
           }}
           onPress={() => navigation.navigate('HomeSearch')}
         >
@@ -385,24 +423,26 @@ const StudentHome = ({ navigation }) => {
         snapToInterval={wp('100%')}
       >
         {EducatorDetails.map((items, key) => (
-          <View style={{ marginTop: 10 }} key={key}>
+          <View
+            style={{ marginTop: 10, alignItems: 'center', marginLeft: 3 }}
+            key={key}
+          >
             <Card.Image
               source={items.img}
               style={{
                 width: 80,
                 height: 80,
                 borderRadius: 100,
-                marginLeft: 30,
               }}
             />
-            <View style={{ flexDirection: 'column' }}>
+            <View style={{ flexDirection: 'column', alignItems: 'center' }}>
               <Text
                 style={{
-                  marginLeft: 35,
                   fontSize: 13,
                   top: 5,
                   fontWeight: 'bold',
-                  flex: 1,
+                  color: 'black',
+                  textAlign: 'center',
                 }}
               >
                 {items.name}
@@ -411,9 +451,9 @@ const StudentHome = ({ navigation }) => {
                 style={{
                   fontSize: 9,
                   top: 5,
-                  marginLeft: 35,
+                  textAlign: 'center',
                   color: 'grey',
-                  flex: 2,
+                  width: 80,
                 }}
               >
                 {items.info}
@@ -431,7 +471,7 @@ const StudentHome = ({ navigation }) => {
                   <Icon
                     key={key}
                     name="star"
-                    style={{ marginLeft: 0, color: '#FFC107', flex: 1 }}
+                    style={{ marginLeft: 0, color: '#FFC107' }}
                   />
                 ))}
               </View>

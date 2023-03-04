@@ -6,6 +6,8 @@ import OnboardingSecond from '@/Containers/screens/Onboarding/onboarding_second'
 import OnboardingThird from '@/Containers/screens/Onboarding/onboarding_third'
 import OnboardingFourth from '@/Containers/screens/Onboarding/onboarding_fourth'
 import LoginFirst from '@/Containers/screens/Authentication/login_first'
+import LoginSecond from '@/Containers/screens/Authentication/login_second'
+import LoginThird from '@/Containers/screens/Authentication/login_third'
 import SignupEmail from '@/Containers/screens/Authentication/signup_email'
 import LoginFourth from '@/Containers/screens/Authentication/login_fourth'
 import LoginFifth from '@/Containers/screens/Authentication/login_fifth'
@@ -19,10 +21,19 @@ import MyLearning from '@/Containers/screens/StudentHome/my_learning'
 import HomeSearchResult from '@/Containers/screens/StudentHome/home_search_result'
 import Wishlist from '@/Containers/screens/StudentHome/wishlist'
 import EducatorHome from '@/Containers/screens/Educator/home'
+import StudentAttendance from '@/Containers/screens/Educator/student_attendance'
+import UpcomingSessions from '@/Containers/screens/Educator/upcoming_sessions'
+import UploadContent from '@/Containers/screens/Educator/upload_content'
 import Dashboard from '@/Containers/screens/Educator/dashboard'
+import StudentDetails from '@/Containers/screens/Educator/student_details'
+import StudentSearchResult from '@/Containers/screens/Educator/student_search_result'
 // import Group from '@/Containers/screens/Commons/group'
 import EducatorOrStudent from '@/Containers/screens/EducatorOrStudent/educator_or_student'
 import Payment from '@/Containers/screens/Payment/payment'
+import UploadedVideos from '@/Containers/screens/Educator/uploaded_videos'
+import Notifications from '@/Containers/screens/Educator/notifications'
+import Earnings from '@/Containers/screens/Educator/earnings'
+import EducatorProfile from '@/Containers/screens/Educator/educator_profile'
 
 const screens = {
   Splash: {
@@ -77,6 +88,20 @@ const screens = {
       backgroundColor: 'white',
     },
   },
+  LoginSecond: {
+    screen: LoginSecond,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  LoginThird: {
+    screen: LoginThird,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
   SignupEmail: {
     screen: SignupEmail,
     navigationOptions: {
@@ -112,6 +137,20 @@ const screens = {
       backgroundColor: 'white',
     },
   },
+  StudentSearchResult: {
+    screen: StudentSearchResult,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  StudentAttendance: {
+    screen: StudentAttendance,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
   Dashboard: {
     screen: Dashboard,
     navigationOptions: {
@@ -121,6 +160,55 @@ const screens = {
   },
   StudentHome: {
     screen: StudentHome,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  StudentDetails: {
+    screen: StudentDetails,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  UpcomingSessions: {
+    screen: UpcomingSessions,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  UploadedVideos: {
+    screen: UploadedVideos,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  UploadContent: {
+    screen: UploadContent,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  Notifications: {
+    screen: Notifications,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  Earnings: {
+    screen: Earnings,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  EducatorProfile: {
+    screen: EducatorProfile,
     navigationOptions: {
       headerShown: false,
       backgroundColor: 'white',

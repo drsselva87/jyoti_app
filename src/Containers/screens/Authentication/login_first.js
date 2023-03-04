@@ -8,6 +8,7 @@ import {
   TextInput,
   SafeAreaView,
   Pressable,
+  ActivityIndicator,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Button, Divider } from '@rneui/base'
@@ -27,6 +28,10 @@ const LoginFirst = ({ navigation }) => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState(false)
+  const toggleLoading = isLoading => {
+    setIsLoading(!isLoading)
+  }
   // Set an initializing state whilst Firebase connects
   const [profileImage, setProfileImage] = useState('')
 
@@ -63,19 +68,25 @@ const LoginFirst = ({ navigation }) => {
 
   const EmailSignIn = async (email, password) => {
     try {
-      const res = await auth().signInWithEmailAndPassword(email, password)
-      console.log('Signed-In')
-      console.log(res)
-      dispatch(
-        addUser({
-          email: res.user.email,
-          name: res.user.displayName,
-          photo: res.user.photoURL,
-        }),
-      )
-      navigation.navigate('StudentHome')
+      if (email !== '' && password !== '') {
+        toggleLoading()
+        const res = await auth().signInWithEmailAndPassword(email, password)
+        console.log('Signed-In')
+        console.log(res)
+        dispatch(
+          addUser({
+            email: res.user.email,
+            name: res.user.displayName,
+            photo: res.user.photoURL,
+          }),
+        )
+        navigation.navigate('StudentHome')
+      } else {
+        alert('Please Enter Email and Password to Continue')
+      }
     } catch (error) {
       console.log(error.code)
+      toggleLoading()
       if (error.code === 'auth/invalid-email') {
         alert('Please Enter Valid Email Id')
       }
@@ -251,7 +262,7 @@ const LoginFirst = ({ navigation }) => {
           fontWeight: '400',
           marginTop: 10,
         }}
-        onPress={() => navigation.navigate('SignupEmail')}
+        onPress={() => navigation.navigate('LoginFourth')}
       >
         Forgot password?
       </Text>
@@ -275,6 +286,7 @@ const LoginFirst = ({ navigation }) => {
         }}
       >
         Continue
+        {isLoading && <ActivityIndicator size="large" color="white" />}
       </Button>
       <Divider
         orientation="horizontal"

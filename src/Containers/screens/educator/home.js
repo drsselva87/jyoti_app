@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
@@ -11,7 +11,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
 
-import NavTab from './bottomNavTab'
+// import NavTab from './bottomNavTab'
 
 const EducatorHome = ({ navigation }) => {
   return (
@@ -19,7 +19,7 @@ const EducatorHome = ({ navigation }) => {
       <Card
         width={wp('100%')}
         borderRadius={5}
-        containerStyle={{ backgroundColor: '#27BC7F', margin: 0, padding: 0 }}
+        containerStyle={{ margin: 0, padding: 0 }}
       >
         <View style={{ display: 'flex', flexDirection: 'row', padding: 10 }}>
           <Pressable onPress={() => navigation.navigate('Dashboard')}>
@@ -35,29 +35,49 @@ const EducatorHome = ({ navigation }) => {
             />
           </Pressable>
           <View marginTop={20} marginLeft={wp('2%')}>
-            <Text style={{ color: 'white', fontSize: 14 }}>Hello!</Text>
-            <Text
-              style={{ color: '#0a5943', fontWeight: 'bold', fontSize: 16 }}
-            >
+            <Text style={{ color: 'black', fontSize: 14 }}>Hello!</Text>
+            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 16 }}>
               Jyoti Jha
             </Text>
           </View>
-          <View marginTop={20} marginLeft={wp('50%')}>
-            <Icon name="chatbubble-ellipses-outline" size={27} color="black" />
-          </View>
+          <Pressable marginTop={20} marginLeft={wp('50%')}>
+            <Icon name="search" size={27} color="black" />
+          </Pressable>
         </View>
       </Card>
-      <View style={{ flexDirection: 'row', width: wp('40%') }}>
+      <View
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
+      >
         <Text
           style={{
             color: '#343434',
-            marginTop: 10,
-            marginLeft: wp('10%'),
-            flex: 1,
           }}
         >
-          Top Learners
+          Attendance
         </Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('EducatorProfile')
+          }}
+        >
+          <Text
+            style={{
+              color: '#27BC7F',
+              marginTop: 10,
+            }}
+          >
+            View All
+          </Text>
+        </Pressable>
       </View>
       <ScrollView
         horizontal
@@ -79,30 +99,32 @@ const EducatorHome = ({ navigation }) => {
         ))}
       </ScrollView>
       <View
-        style={[
-          styles.container,
-          {
-            display: 'flex',
-            flexDirection: 'row',
-            padding: 10,
-          },
-        ]}
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
       >
-        <View style={{ elevation: 5, flex: 1, marginRight: 25 }}>
-          <Text style={{ color: '#343434', marginTop: 20, marginLeft: 30 }}>
-            Upcoming Sessions
-          </Text>
-        </View>
-        <View style={{ elevation: 5, flex: 1, maringRight: 110 }}>
-          <Text style={{ color: '#27BC7F', marginTop: 20, marginLeft: 110 }}>
-            View all
-          </Text>
-        </View>
+        <Text style={{ color: '#343434' }}>Upcoming Sessions</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('StudentSearchResult')
+          }}
+        >
+          <Text style={{ color: '#27BC7F' }}>View all</Text>
+        </Pressable>
       </View>
+
       <LinearGradient
         colors={['#40D095', '#328764']}
         style={styles.linearGradient}
-        start={{ x: 0, y: 0.7 }}
+        // start={{ x: 0, y: 0.7 }}
+        marginHorizontal={10}
       >
         <View
           style={{
@@ -121,7 +143,7 @@ const EducatorHome = ({ navigation }) => {
               }}
             />
           </View>
-          <View style={{ marginLeft: 15 }}>
+          <View>
             <Text
               style={{
                 fontSize: 16,
@@ -152,43 +174,45 @@ const EducatorHome = ({ navigation }) => {
         </View>
         <Card
           style={{ color: '#ffffff' }}
-          containerStyle={{ borderRadius: 10 }}
+          containerStyle={{ borderRadius: 10, width: wp('80%') }}
         >
           <View style={{ display: 'flex', flexDirection: 'row' }}>
-            <Icon name="calendar" size={18} />
-            <Text fontSize={12} style={{ paddingLeft: 3, paddingRight: 7 }}>
+            <Icon name="calendar" size={18} style={{ color: 'black' }} />
+            <Text fontSize={12} style={{ paddingLeft: 3, color: 'black' }}>
               Monday, 26 Decemeber
             </Text>
-            <Icon name="time-outline" size={18} />
-            <Text fontSize={12} style={{ paddingLeft: 3 }}>
+            <Icon
+              name="time-outline"
+              size={18}
+              style={{ color: 'black', marginLeft: 10 }}
+            />
+            <Text fontSize={12} style={{ color: 'black' }}>
               03:00 - 05:00
             </Text>
           </View>
         </Card>
       </LinearGradient>
+
       <View
-        style={[
-          styles.container,
-          {
-            display: 'flex',
-            flexDirection: 'row',
-          },
-        ]}
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
       >
-        <View style={{ elevation: 5, flex: 1, marginRight: 25 }}>
-          <Text
-            style={{ color: '#343434', marginTop: 20, marginLeft: wp('10%') }}
-          >
-            Categories
-          </Text>
-        </View>
-        <View style={{ elevation: 5, flex: 1, maringRight: 110 }}>
-          <Text
-            style={{ color: '#27BC7F', marginTop: 20, marginLeft: wp('27%') }}
-          >
-            View all
-          </Text>
-        </View>
+        <Text style={{ color: '#343434' }}>Categories</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('HomeCategories')
+          }}
+        >
+          <Text style={{ color: '#27BC7F' }}>View all</Text>
+        </Pressable>
       </View>
       <ScrollView
         horizontal
@@ -206,31 +230,31 @@ const EducatorHome = ({ navigation }) => {
           >
             <Icon name="logo-html5" size={25} color="#27BC7F" />
           </Card>
-          <Text style={{ textAlign: 'center' }}>Software</Text>
+          <Text style={{ textAlign: 'center', color: 'black' }}>Software</Text>
         </View>
         <View>
           <Card containerStyle={{ borderRadius: 50 }}>
             <FontIcon name="stethoscope" size={25} color="#27BC7F" />
           </Card>
-          <Text style={{ textAlign: 'center' }}>NEET</Text>
+          <Text style={{ textAlign: 'center', color: 'black' }}>NEET</Text>
         </View>
         <View>
           <Card containerStyle={{ borderRadius: 50 }}>
             <Icon name="bulb-outline" size={25} color="#27BC7F" />
           </Card>
-          <Text style={{ textAlign: 'center' }}>JEE</Text>
+          <Text style={{ textAlign: 'center', color: 'black' }}>JEE</Text>
         </View>
         <View>
           <Card containerStyle={{ borderRadius: 50 }}>
             <Icon name="cloud-circle" size={25} color="#27BC7F" />
           </Card>
-          <Text style={{ textAlign: 'center' }}>UPSC</Text>
+          <Text style={{ textAlign: 'center', color: 'black' }}>UPSC</Text>
         </View>
         <View>
           <Card containerStyle={{ borderRadius: 50 }}>
             <Icon name="ios-analytics-outline" size={25} color="#27BC7F" />
           </Card>
-          <Text style={{ textAlign: 'center' }}>Commerce</Text>
+          <Text style={{ textAlign: 'center', color: 'black' }}>Commerce</Text>
         </View>
         <View>
           <Card containerStyle={{ borderRadius: 50 }}>
@@ -238,28 +262,28 @@ const EducatorHome = ({ navigation }) => {
           </Card>
         </View>
       </ScrollView>
-      <View style={{ flexDirection: 'row', width: 750 }}>
-        <Text
-          style={{
-            color: '#343434',
-            marginTop: 10,
-            marginLeft: wp('7%'),
-            flex: 1,
+      <View
+        style={{
+          elevation: 5,
+          marginLeft: wp('5%'),
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'space-between',
+          marginRight: wp('5%'),
+          marginTop: 10,
+        }}
+      >
+        <Text style={{ color: '#343434' }}>Recently Uploaded Videos</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('HomeSearch')
           }}
         >
-          Recently Uploaded Videos
-        </Text>
-        <Text
-          style={{
-            color: '#27BC7F',
-            marginTop: 10,
-            paddingLeft: wp('20%'),
-            flex: 2,
-          }}
-        >
-          View all
-        </Text>
+          <Text style={{ color: '#27BC7F' }}>View all</Text>
+        </Pressable>
       </View>
+
       <ScrollView
         vertical
         disableIntervalMomentum={true}
@@ -269,7 +293,7 @@ const EducatorHome = ({ navigation }) => {
         {CoursesDetails.map((items, key) => (
           <View key={key}>
             <Card
-              width={350}
+              width={wp('90%')}
               height={80}
               borderRadius={10}
               containerStyle={{
@@ -295,45 +319,53 @@ const EducatorHome = ({ navigation }) => {
                     fontSize: 16,
                     top: 5,
                     fontWeight: 'bold',
+                    color: 'black',
                   }}
                 >
                   {items.course_name}
                 </Text>
-                <View style={{ display: 'flex', flexDirection: 'row' }}>
-                  <View style={{ flex: 1 }}>
-                    <Text
-                      style={{
-                        width: 90,
-                        marginLeft: 105,
-                        fontSize: 14,
-                        marginTop: 9,
-                      }}
-                    >
-                      {items.published_by}
-                    </Text>
-                  </View>
-                  <View style={{ flex: 1, marginLeft: 170, marginTop: 12 }}>
-                    <Icon
-                      name="time-outline"
-                      style={{
-                        width: 90,
-                        fontSize: 14,
-                      }}
-                    >
-                      <Text>23 Min</Text>
-                    </Icon>
-                  </View>
-                  <View style={{ flex: 1, marginLeft: 80, marginTop: 12 }}>
-                    <Icon
-                      name="heart"
-                      style={{
-                        width: 90,
-                        fontSize: 14,
-                      }}
-                    >
-                      <Text>485 Likes</Text>
-                    </Icon>
-                  </View>
+                <View
+                  style={{
+                    elevation: 5,
+                    marginLeft: 105,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    alignItems: 'space-between',
+                    marginRight: wp('5%'),
+                    marginTop: 10,
+                  }}
+                >
+                  <Text
+                    style={{
+                      width: 90,
+                      fontSize: 14,
+                      marginTop: 9,
+                      color: 'black',
+                    }}
+                  >
+                    {items.published_by}
+                  </Text>
+                  <Icon
+                    name="time-outline"
+                    style={{
+                      width: 90,
+                      fontSize: 14,
+                      color: 'black',
+                    }}
+                  >
+                    <Text style={{ color: 'black' }}>23 Min</Text>
+                  </Icon>
+                  <Icon
+                    name="heart"
+                    style={{
+                      width: 90,
+                      fontSize: 14,
+                      color: 'black',
+                    }}
+                  >
+                    <Text style={{ color: 'black' }}>485 Likes</Text>
+                  </Icon>
                 </View>
                 <Text />
               </Card.Image>
@@ -355,13 +387,15 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     padding: 10,
-    marginLeft: 30,
+    marginLeft: 20,
+    marginTop: 10,
     borderRadius: 10,
     height: 150,
-    width: 352,
+    width: wp('90%'),
   },
   responsiveBox: {
     width: wp('100%'),
+    backgroundColor: 'white',
     flexDirection: 'column',
   },
 })

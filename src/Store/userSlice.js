@@ -12,6 +12,7 @@ const userSlice = createSlice({
       state.email = action.payload.email
       state.name = action.payload.name
       state.photo = action.payload.photo
+      state.password = state.password
     },
     clearUser: state => {
       state.email = []
