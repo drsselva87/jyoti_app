@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import Navigation from './Navigators/route'
-import StudentProfile from './Containers/screens/StudentHome/studentProfile'
 import { Provider } from 'react-redux'
 import store from './Store/store'
 

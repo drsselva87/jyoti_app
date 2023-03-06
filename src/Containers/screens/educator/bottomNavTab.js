@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import Home from '../StudentHome/home'
+import Home from '../Student/home'
 import LoginFirst from '../Authentication/login_first'
 import { NavigationContainer } from '@react-navigation/native'
 import {

@@ -13,13 +13,13 @@ import LoginFourth from '@/Containers/screens/Authentication/login_fourth'
 import LoginFifth from '@/Containers/screens/Authentication/login_fifth'
 import LoginSixth from '@/Containers/screens/Authentication/login_sixth'
 import Splash from '@/Containers/screens/Commons/splash'
-import StudentHome from '@/Containers/screens/StudentHome/home'
-import HomeSearch from '@/Containers/screens/StudentHome/home_search'
-import HomeCategories from '@/Containers/screens/StudentHome/home_categories'
-import HomeVideoPlay from '@/Containers/screens/StudentHome/home_video_play'
-import MyLearning from '@/Containers/screens/StudentHome/my_learning'
-import HomeSearchResult from '@/Containers/screens/StudentHome/home_search_result'
-import Wishlist from '@/Containers/screens/StudentHome/wishlist'
+import StudentHome from '@/Containers/screens/Student/home'
+import HomeSearch from '@/Containers/screens/Student/home_search'
+import HomeCategories from '@/Containers/screens/Student/home_categories'
+import HomeVideoPlay from '@/Containers/screens/Student/home_video_play'
+import MyLearning from '@/Containers/screens/Student/my_learning'
+import HomeSearchResult from '@/Containers/screens/Student/home_search_result'
+import Wishlist from '@/Containers/screens/Student/wishlist'
 import EducatorHome from '@/Containers/screens/Educator/home'
 import StudentAttendance from '@/Containers/screens/Educator/student_attendance'
 import UpcomingSessions from '@/Containers/screens/Educator/upcoming_sessions'
@@ -34,6 +34,8 @@ import UploadedVideos from '@/Containers/screens/Educator/uploaded_videos'
 import Notifications from '@/Containers/screens/Educator/notifications'
 import Earnings from '@/Containers/screens/Educator/earnings'
 import EducatorProfile from '@/Containers/screens/Educator/educator_profile'
+import Educator from '@/Containers/screens/Educator/educator'
+import Student from '@/Containers/screens/Student/student'
 
 const screens = {
   Splash: {
@@ -158,6 +160,13 @@ const screens = {
       backgroundColor: 'white',
     },
   },
+  Student: {
+    screen: Student,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
   StudentHome: {
     screen: StudentHome,
     navigationOptions: {
@@ -202,6 +211,13 @@ const screens = {
   },
   Earnings: {
     screen: Earnings,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  Educator: {
+    screen: Educator,
     navigationOptions: {
       headerShown: false,
       backgroundColor: 'white',

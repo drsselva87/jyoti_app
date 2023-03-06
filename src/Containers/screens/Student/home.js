@@ -18,8 +18,6 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
 import { useSelector } from 'react-redux'
-import { color } from 'react-native-reanimated'
-// import NavTab from '../screens/nav_tab';
 
 const StudentHome = ({ navigation }) => {
   const userEmail = useSelector(store => store.user.email)

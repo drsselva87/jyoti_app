@@ -1,6 +1,6 @@
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import Home from '../StudentHome/home'
+import Home from '../Student/home'
 import LoginFirst from '../Authentication/login_first'
 import { NavigationContainer } from '@react-navigation/native'
 import Dashboard from './dashboard'

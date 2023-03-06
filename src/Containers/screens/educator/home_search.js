@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Card, SearchBar } from '@rneui/themed'
-import NavTab from '../Commons/nav_tab'
+import NavTab from '../Commons/educator_bottom_tab'
 import { Button_Name } from '../../../Constants/Button_Name'
 import { Button } from '@react-native-material/core'
 import {

@@ -10,10 +10,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
-
-// import NavTab from './bottomNavTab'
+import NavTab from '../Commons/educator_bottom_tab'
+import { createAppContainer } from 'react-navigation'
 
 const EducatorHome = ({ navigation }) => {
+  {
+    console.log(navigation.navigate('Dashboard'))
+  }
   return (
     <ScrollView contentContainerStyle={styles.responsiveBox}>
       <Card

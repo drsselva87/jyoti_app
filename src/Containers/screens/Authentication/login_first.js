@@ -80,7 +80,7 @@ const LoginFirst = ({ navigation }) => {
             photo: res.user.photoURL,
           }),
         )
-        navigation.navigate('StudentHome')
+        navigation.navigate('Student')
       } else {
         alert('Please Enter Email and Password to Continue')
       }
@@ -128,7 +128,7 @@ const LoginFirst = ({ navigation }) => {
           photo: userInfo.user.photo,
         }),
       )
-      navigation.navigate('StudentHome')
+      navigation.navigate('Student')
       return auth().signInWithCredential(googleCredential)
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {

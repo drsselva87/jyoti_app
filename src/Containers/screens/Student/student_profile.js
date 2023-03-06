@@ -22,7 +22,7 @@ import {
 } from 'react-native-responsive-screen'
 import { Divider } from 'react-native-paper'
 
-const EducatorProfile = ({ navigation }) => {
+const StudentProfile = ({ navigation }) => {
   return (
     <ScrollView style={styles.responsiveBox}>
       <Card
@@ -52,7 +52,7 @@ const EducatorProfile = ({ navigation }) => {
               fontSize: 16,
             }}
           >
-            Tutor Profile
+            Student Profile
           </Text>
         </View>
       </Card>
@@ -139,4 +139,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default EducatorProfile
+export default StudentProfile

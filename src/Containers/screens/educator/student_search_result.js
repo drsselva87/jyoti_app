@@ -1,19 +1,10 @@
 import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TextInput,
-  Pressable,
-  Dimensions,
-} from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Card, SearchBar } from '@rneui/themed'
 import * as Progress from 'react-native-progress'
 import { Button } from '@rneui/base'
-import NavTab from '../Commons/nav_tab'
+// import NavTab from '../Commons/bottom_tab'
 import { CoursesDetails } from '../../../Constants/Courses'
 import {
   widthPercentageToDP as wp,
@@ -151,7 +142,7 @@ const StudentSearchResult = ({ navigation }) => {
           ))}
         </ScrollView>
       </View>
-      <NavTab />
+      {/* <NavTab /> */}
     </ScrollView>
   )
 }

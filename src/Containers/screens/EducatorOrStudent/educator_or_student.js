@@ -86,7 +86,7 @@ const EducatorOrStudent = ({ navigation }) => {
             color: 'white',
             paddingVertical: 7,
           }}
-          onPress={() => navigation.navigate('EducatorHome')}
+          onPress={() => navigation.navigate('Educator')}
         />
       </View>
     </ScrollView>
