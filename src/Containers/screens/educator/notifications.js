@@ -54,7 +54,7 @@ const Notifications = ({ navigation }) => {
           </Text>
         </View>
       </Card>
-      <View style={{ height: hp('79%') }}>
+      <View style={{ height: hp('79%'), padding: 10 }}>
         <ScrollView
           vertical
           disableIntervalMomentum={true}

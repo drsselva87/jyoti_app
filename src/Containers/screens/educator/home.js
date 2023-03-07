@@ -181,15 +181,11 @@ const EducatorHome = ({ navigation }) => {
         >
           <View style={{ display: 'flex', flexDirection: 'row' }}>
             <Icon name="calendar" size={18} style={{ color: 'black' }} />
-            <Text fontSize={12} style={{ paddingLeft: 3, color: 'black' }}>
+            <Text fontSize={10} style={{ paddingLeft: 3, color: 'black' }}>
               Monday, 26 Decemeber
             </Text>
-            <Icon
-              name="time-outline"
-              size={18}
-              style={{ color: 'black', marginLeft: 10 }}
-            />
-            <Text fontSize={12} style={{ color: 'black' }}>
+            <Icon name="time-outline" size={18} style={{ color: 'black' }} />
+            <Text fontSize={10} style={{ color: 'black' }}>
               03:00 - 05:00
             </Text>
           </View>
@@ -337,6 +333,7 @@ const EducatorHome = ({ navigation }) => {
                     alignItems: 'space-between',
                     marginRight: wp('5%'),
                     marginTop: 10,
+                    paddingRight: 10,
                   }}
                 >
                   <Text
