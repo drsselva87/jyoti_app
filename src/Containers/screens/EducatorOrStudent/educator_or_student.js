@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
 import { Button } from '@react-native-material/core'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -7,9 +7,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
-import { color } from 'react-native-reanimated'
+import { useDispatch, useSelector } from 'react-redux'
 
 const EducatorOrStudent = ({ navigation }) => {
+  const { isLoggedIn } = useSelector(state => state.auth)
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View
@@ -86,7 +87,11 @@ const EducatorOrStudent = ({ navigation }) => {
             color: 'white',
             paddingVertical: 7,
           }}
-          onPress={() => navigation.navigate('Educator')}
+          onPress={() =>
+            isLoggedIn
+              ? navigation.navigate('Educator')
+              : navigation.navigate('EducatorLogin')
+          }
         />
       </View>
     </ScrollView>

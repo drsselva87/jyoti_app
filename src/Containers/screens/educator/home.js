@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
@@ -13,10 +14,21 @@ import {
 import NavTab from '../Commons/educator_bottom_tab'
 import { createAppContainer } from 'react-navigation'
 
+const baseUrl = 'http://44.202.89.70:8989/api/getUserById/'
+
 const EducatorHome = ({ navigation }) => {
-  {
-    console.log(navigation.navigate('Dashboard'))
-  }
+  // Passing configuration object to axios
+  axios({
+    method: 'get',
+    url: `${baseUrl}10001/`,
+  })
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
   return (
     <ScrollView contentContainerStyle={styles.responsiveBox}>
       <Card

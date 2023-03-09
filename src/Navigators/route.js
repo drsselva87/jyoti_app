@@ -36,6 +36,7 @@ import Earnings from '@/Containers/screens/Educator/earnings'
 import EducatorProfile from '@/Containers/screens/Educator/educator_profile'
 import Educator from '@/Containers/screens/Educator/educator'
 import Student from '@/Containers/screens/Student/student'
+import EducatorLogin from '@/Containers/screens/Educator/educator_login'
 
 const screens = {
   Splash: {
@@ -260,6 +261,13 @@ const screens = {
   },
   Wishlist: {
     screen: Wishlist,
+    navigationOptions: {
+      headerShown: false,
+      backgroundColor: 'white',
+    },
+  },
+  EducatorLogin: {
+    screen: EducatorLogin,
     navigationOptions: {
       headerShown: false,
       backgroundColor: 'white',
