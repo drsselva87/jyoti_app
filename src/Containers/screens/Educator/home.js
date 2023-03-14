@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Pressable, Image, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
-import { Card } from '@rneui/themed'
+// import { Card } from '@rneui/themed'
+import { Card } from 'react-native-shadow-cards';
+
 import { LearnerDetails } from '../../../Constants/Learners'
 import { CoursesDetails } from '../../../Constants/Courses'
 import LinearGradient from 'react-native-linear-gradient'
@@ -14,366 +16,394 @@ import NavTab from '../Commons/educator_bottom_tab'
 import { createAppContainer } from 'react-navigation'
 
 const EducatorHome = ({ navigation }) => {
-  {
-    console.log(navigation.navigate('Dashboard'))
-  }
+  // {
+  //   console.log(navigation.navigate('Dashboard'))
+  // }
   return (
-    <ScrollView contentContainerStyle={styles.responsiveBox}>
-      <Card
-        width={wp('100%')}
-        borderRadius={5}
-        containerStyle={{ margin: 0, padding: 0 }}
-      >
-        <View style={{ display: 'flex', flexDirection: 'row', padding: 10 }}>
+    <View style={styles.responsiveBox}>
+      <ScrollView>
+        <View style={{ flexDirection: 'row', padding: 10, marginTop: 10 }}>
           <Pressable onPress={() => navigation.navigate('Dashboard')}>
-            <Card.Image
+            <Image
               source={require('../../../Assets/Images/avatar.jpeg')}
               style={{
                 width: 50,
                 height: 50,
                 borderRadius: 100,
-                marginTop: 20,
                 marginLeft: wp('3%'),
               }}
             />
           </Pressable>
-          <View marginTop={20} marginLeft={wp('2%')}>
+          <View style={{ marginLeft: 10, width: "70%" }}>
             <Text style={{ color: 'black', fontSize: 14 }}>Hello!</Text>
             <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 16 }}>
               Jyoti Jha
             </Text>
           </View>
-          <Pressable marginTop={20} marginLeft={wp('50%')}>
+          <Pressable style={{}}>
             <Icon name="search" size={27} color="black" />
           </Pressable>
         </View>
-      </Card>
-      <View
-        style={{
-          elevation: 5,
-          marginLeft: wp('5%'),
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'space-between',
-          marginRight: wp('5%'),
-          marginTop: 10,
-        }}
-      >
-        <Text
+
+        <View
           style={{
-            color: '#343434',
-          }}
-        >
-          Attendance
-        </Text>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('EducatorProfile')
+            elevation: 5,
+            marginLeft: wp('5%'),
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'space-between',
+            marginRight: wp('5%'),
+            marginTop: 10,
           }}
         >
           <Text
             style={{
-              color: '#27BC7F',
-              marginTop: 10,
+              color: '#343434',
             }}
           >
-            View All
+            Attendance
           </Text>
-        </Pressable>
-      </View>
-      <ScrollView
+          <Pressable
+            onPress={() => {
+              navigation.navigate('EducatorProfile')
+            }}
+          >
+            <Text
+              style={{
+                color: '#27BC7F',
+                marginTop: 10,
+              }}
+            >
+              View All
+            </Text>
+          </Pressable>
+        </View>
+        {/* <ScrollView
+      style={{height:100}}
         horizontal
         disableIntervalMomentum={true}
-        snapToInterval={wp('100%')}
-      >
-        {LearnerDetails.map((items, key) => (
-          <View style={{ marginTop: 10 }} key={key}>
-            <Card.Image
-              source={items.img}
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 100,
-                marginLeft: wp('5%'),
-              }}
-            />
-          </View>
-        ))}
-      </ScrollView>
-      <View
-        style={{
-          elevation: 5,
-          marginLeft: wp('5%'),
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'space-between',
-          marginRight: wp('5%'),
-          marginTop: 10,
-        }}
-      >
-        <Text style={{ color: '#343434' }}>Upcoming Sessions</Text>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('StudentSearchResult')
-          }}
-        >
-          <Text style={{ color: '#27BC7F' }}>View all</Text>
-        </Pressable>
-      </View>
-
-      <LinearGradient
-        colors={['#40D095', '#328764']}
-        style={styles.linearGradient}
-        // start={{ x: 0, y: 0.7 }}
-        marginHorizontal={10}
-      >
+        // snapToInterval={wp('100%')}
+      > */}
+        <View style={{ width: "100%", height: 80 }}>
+          <FlatList
+            data={LearnerDetails}
+            horizontal={true}
+            renderItem={({ item, key }) => (
+              // {LearnerDetails.map((items, key) => (
+              <View style={{ marginTop: 10 }} key={key}>
+                <Image
+                  source={item.img}
+                  style={{
+                    width: 64,
+                    height: 64,
+                    borderRadius: 100,
+                    marginLeft: wp('3%'), marginRight: wp('2%')
+                  }}
+                />
+              </View>
+              // ))}
+            )
+            }
+          />
+        </View>
+        {/* </ScrollView> */}
         <View
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <View>
-            <Card.Image
-              source={require('../../../Assets/Images/course_images/react.jpeg')}
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 100,
-                marginLeft: wp('3%'),
-              }}
-            />
-          </View>
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                fontFamily: 'Roboto',
-                textAlign: 'center',
-                marginTop: 5,
-                marginLeft: 5,
-                color: '#ffffff',
-                backgroundColor: 'transparent',
-              }}
-            >
-              Advanced Javascript
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                fontFamily: 'Roboto',
-                textAlign: 'center',
-                marginTop: 5,
-                marginLeft: 5,
-                color: '#ffffff',
-                backgroundColor: 'transparent',
-              }}
-            >
-              Students Interested 100+
-            </Text>
-          </View>
-        </View>
-        <Card
-          style={{ color: '#ffffff' }}
-          containerStyle={{ borderRadius: 10, width: wp('80%') }}
-        >
-          <View style={{ display: 'flex', flexDirection: 'row' }}>
-            <Icon name="calendar" size={18} style={{ color: 'black' }} />
-            <Text fontSize={10} style={{ paddingLeft: 3, color: 'black' }}>
-              Monday, 26 Decemeber
-            </Text>
-            <Icon name="time-outline" size={18} style={{ color: 'black' }} />
-            <Text fontSize={10} style={{ color: 'black' }}>
-              03:00 - 05:00
-            </Text>
-          </View>
-        </Card>
-      </LinearGradient>
 
-      <View
-        style={{
-          elevation: 5,
-          marginLeft: wp('5%'),
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'space-between',
-          marginRight: wp('5%'),
-          marginTop: 10,
-        }}
-      >
-        <Text style={{ color: '#343434' }}>Categories</Text>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('HomeCategories')
+            marginLeft: wp('5%'),
+
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'space-between',
+            marginRight: wp('5%'),
+            marginTop: 10,
           }}
         >
-          <Text style={{ color: '#27BC7F' }}>View all</Text>
-        </Pressable>
-      </View>
-      <ScrollView
-        horizontal
-        disableIntervalMomentum={true}
-        snapToInterval={wp('100%')}
-        style={{ marginLeft: 10 }}
-      >
-        <View>
-          <Card
-            containerStyle={{
-              borderRadius: 50,
-              justifyContent: 'center',
-              alignContent: 'center',
+          <Text style={{ color: '#343434' }}>Upcoming Sessions</Text>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('StudentSearchResult')
             }}
           >
-            <Icon name="logo-html5" size={25} color="#27BC7F" />
-          </Card>
-          <Text style={{ textAlign: 'center', color: 'black' }}>Software</Text>
+            <Text style={{ color: '#27BC7F' }}>View all</Text>
+          </Pressable>
         </View>
-        <View>
-          <Card containerStyle={{ borderRadius: 50 }}>
-            <FontIcon name="stethoscope" size={25} color="#27BC7F" />
-          </Card>
-          <Text style={{ textAlign: 'center', color: 'black' }}>NEET</Text>
-        </View>
-        <View>
-          <Card containerStyle={{ borderRadius: 50 }}>
-            <Icon name="bulb-outline" size={25} color="#27BC7F" />
-          </Card>
-          <Text style={{ textAlign: 'center', color: 'black' }}>JEE</Text>
-        </View>
-        <View>
-          <Card containerStyle={{ borderRadius: 50 }}>
-            <Icon name="cloud-circle" size={25} color="#27BC7F" />
-          </Card>
-          <Text style={{ textAlign: 'center', color: 'black' }}>UPSC</Text>
-        </View>
-        <View>
-          <Card containerStyle={{ borderRadius: 50 }}>
-            <Icon name="ios-analytics-outline" size={25} color="#27BC7F" />
-          </Card>
-          <Text style={{ textAlign: 'center', color: 'black' }}>Commerce</Text>
-        </View>
-        <View>
-          <Card containerStyle={{ borderRadius: 50 }}>
-            <Icon name="logo-html5" size={25} color="#27BC7F" />
-          </Card>
-        </View>
-      </ScrollView>
-      <View
-        style={{
-          elevation: 5,
-          marginLeft: wp('5%'),
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'space-between',
-          marginRight: wp('5%'),
-          marginTop: 10,
-        }}
-      >
-        <Text style={{ color: '#343434' }}>Recently Uploaded Videos</Text>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('HomeSearch')
-          }}
-        >
-          <Text style={{ color: '#27BC7F' }}>View all</Text>
-        </Pressable>
-      </View>
 
-      <ScrollView
-        vertical
-        disableIntervalMomentum={true}
-        snapToInterval={wp('100%')}
-        marginLeft={20}
-      >
-        {CoursesDetails.map((items, key) => (
-          <View key={key}>
-            <Card
-              width={wp('90%')}
-              height={80}
-              borderRadius={10}
-              containerStyle={{
-                backgroundColor: 'white',
-                padding: 0,
-                marginLeft: 5,
-              }}
-            >
-              <Card.Image
-                source={items.img}
+        <LinearGradient
+          colors={['#40D095', '#328764']}
+          style={styles.linearGradient}
+          marginHorizontal={10}
+        >
+          <View
+            style={{
+              flexDirection: 'row', alignItems: "center"
+            }}
+          >
+            <View>
+              <Image
+                source={require('../../../Assets/Images/course_images/react.jpeg')}
                 style={{
-                  width: 100,
-                  height: 80,
-                  borderRadius: 10,
-                  marginLeft: 0,
-                  padding: 0,
+                  width: 64,
+                  height: 64,
+                  borderRadius: 100,
+                  marginLeft: wp('3%'),
+                }}
+              />
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: 'Roboto',
+                  textAlign: 'center',
+                  marginTop: 5,
+                  marginLeft: 8,
+                  color: '#ffffff',
+                  backgroundColor: 'transparent',
                 }}
               >
-                <Text
-                  style={{
-                    width: 300,
-                    marginLeft: 105,
-                    fontSize: 16,
-                    top: 5,
-                    fontWeight: 'bold',
-                    color: 'black',
-                  }}
-                >
-                  {items.course_name}
-                </Text>
-                <View
-                  style={{
-                    elevation: 5,
-                    marginLeft: 105,
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    alignItems: 'space-between',
-                    marginRight: wp('5%'),
-                    marginTop: 10,
-                    paddingRight: 10,
-                  }}
-                >
-                  <Text
-                    style={{
-                      width: 90,
-                      fontSize: 14,
-                      marginTop: 9,
-                      color: 'black',
-                    }}
-                  >
-                    {items.published_by}
-                  </Text>
-                  <Icon
-                    name="time-outline"
-                    style={{
-                      width: 90,
-                      fontSize: 14,
-                      color: 'black',
-                    }}
-                  >
-                    <Text style={{ color: 'black' }}>23 Min</Text>
-                  </Icon>
-                  <Icon
-                    name="heart"
-                    style={{
-                      width: 90,
-                      fontSize: 14,
-                      color: 'black',
-                    }}
-                  >
-                    <Text style={{ color: 'black' }}>485 Likes</Text>
-                  </Icon>
-                </View>
-                <Text />
-              </Card.Image>
-            </Card>
+                Advanced Javascript
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontFamily: 'Roboto',
+                  textAlign: 'center',
+                  marginTop: 5,
+                  marginLeft: 10,
+                  color: '#ffffff',
+                  backgroundColor: 'transparent',
+                }}
+              >
+                Students Interested 100+
+              </Text>
+            </View>
           </View>
-        ))}
+          <Card
+            style={{ color: '#ffffff', borderRadius: 10, width: wp('80%'), height: 40, alignItems: "center", justifyContent: "center", marginTop: 20, alignSelf: "center" }}
+
+          >
+            <View style={{ flexDirection: 'row', justifyContent: "center", alignItems: "center" }}>
+              <Icon name="calendar" size={18} style={{ color: 'black' }} />
+              <Text style={{ marginLeft: 5, color: 'black', fontSize: 12 }}>
+                Monday, 26 Decemeber
+              </Text>
+              <Icon name="time-outline" size={18} style={{ color: 'black', marginLeft: 5 }} />
+              <Text style={{ color: 'black', fontSize: 12, marginLeft: 3 }}>
+                03:00 - 05:00
+              </Text>
+            </View>
+          </Card>
+        </LinearGradient>
+        <LinearGradient
+          colors={['#52FAB5', '#52FAB5']} style={{ height: 6,
+            width: wp('78%'), alignSelf: "center", borderBottomLeftRadius: 10, borderBottomRightRadius: 10
+          }}></LinearGradient>
+        <LinearGradient
+          colors={['#A7FFDB', '#A7FFDB']} style={{
+            height: 6,
+            width: wp('70%'), alignSelf: "center", borderBottomLeftRadius: 10, borderBottomRightRadius: 10
+          }}></LinearGradient>
+
+        <View
+          style={{
+            marginLeft: wp('5%'),
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'space-between',
+            marginRight: wp('5%'),
+            marginTop: 15,
+          }}
+        >
+          <Text style={{ color: '#343434' }}>Categories</Text>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('HomeCategories')
+            }}
+          >
+            <Text style={{ color: '#27BC7F' }}>View all</Text>
+          </Pressable>
+        </View>
+        <View style={{ width: '100%', height: 80, marginTop: 13, }}>
+          <ScrollView horizontal={true} style={{}}>
+            <View style={{ marginLeft: 20 }}>
+              <Card style={styles.category}>
+                <Icon name="logo-html5" size={25} color="#27BC7F" />
+
+              </Card>
+              <Text style={styles.categorytext}>Software</Text>
+            </View>
+            <View style={{ marginLeft: 20 }}>
+              <Card style={styles.category}>
+                <FontIcon name="stethoscope" size={25} color="#27BC7F" />
+
+              </Card>
+              <Text style={styles.categorytext}>NEET</Text>
+
+            </View>
+
+            <View style={{ marginLeft: 20 }}>
+              <Card style={styles.category}>
+                <Icon name="bulb-outline" size={25} color="#27BC7F" />
+              </Card>
+              <Text style={styles.categorytext}>JEE</Text>
+            </View>
+
+            <View style={{ marginLeft: 20 }}>
+              <Card style={styles.category}>
+                <Icon name="cloud-circle" size={25} color="#27BC7F" />
+              </Card>
+              <Text style={styles.categorytext}>UPSC</Text>
+            </View>
+            <View style={{ marginLeft: 20, marginRight: 20 }}>
+              <Card style={styles.category}>
+                <Icon name="ios-analytics-outline" size={25} color="#27BC7F" />
+              </Card>
+              <Text style={styles.categorytext}>Commerce</Text>
+
+            </View>
+          </ScrollView>
+
+        </View>
+
+        <View
+          style={{
+
+            marginLeft: wp('5%'),
+
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'space-between',
+            marginRight: wp('5%'),
+            marginTop: 15,
+          }}
+        >
+          <Text style={{ color: '#343434' }}>Uploaded Videos</Text>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('HomeSearch')
+            }}
+          >
+            <Text style={{ color: '#27BC7F' }}>View all</Text>
+          </Pressable>
+        </View>
+        <View style={{ marginTop: 15 }}>
+          <FlatList
+            data={CoursesDetails}
+
+            renderItem={({ item, key }) => (
+              // {CoursesDetails.map((items, key) => (
+              <View key={key}>
+                <Card style={{
+                  width: "90%", height: 80, borderRadius: 10, backgroundColor: 'white',
+                  marginTop: 15, alignSelf: "center", flexDirection: "row", alignItems: "center"
+                }}
+                >
+                  {/* <View style={{ flexDirection: "row",alignItems:"center" ,}}> */}
+                  <Image
+                    source={item.img}
+                    style={{
+                      width: 65,
+                      height: 65,
+                      borderRadius: 10,
+                      marginLeft: 10,
+
+                    }}
+                  >
+                  </Image>
+                  <View>
+                    <Text
+                      numberOfLines={1}
+                      style={{
+                        width: 300,
+                        marginLeft: 15,
+                        fontSize: 16,
+                        top: 5,
+                        fontWeight: 'bold',
+                        color: 'black',
+                      }}
+                    >
+                      {item.course_name}
+                    </Text>
+                    <View style={{ flexDirection: "row", alignItems: 'center', marginTop: 9, marginLeft: 15 }}>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          color: 'black',
+                        }}
+                      >
+                        {item.published_by}
+                      </Text>
+
+                      <Icon
+                        name="time-outline"
+                        style={{
+                          width: 16,
+                          fontSize: 14,
+                          color: 'black',
+                          marginLeft: 15
+                        }}
+                      >
+                      </Icon>
+                      <Text style={{ color: 'black' }}>23 Min</Text>
+
+                    </View>
+                    {/* <View
+                        style={{
+
+                          marginLeft: 15,
+
+                          flexDirection: 'row',
+
+                          alignItems: 'center',
+
+                          marginTop: 10,
+
+                        }}
+                      >
+                        <Text
+                          style={{
+                            width: 90,
+                            fontSize: 14,
+                            marginTop: 9,
+                            color: 'black',
+                          }}
+                        >
+                          {item.published_by}
+                        </Text>
+                        <Icon
+                          name="time-outline"
+                          style={{
+                            width: 90,
+                            fontSize: 14,
+                            color: 'black',
+                          }}
+                        >
+                          <Text style={{ color: 'black' }}>23 Min</Text>
+                        </Icon>
+                        <Icon
+                          name="heart"
+                          style={{
+                            width: 90,
+                            fontSize: 14,
+                            color: 'black',
+                          }}
+                        >
+                          <Text style={{ color: 'black' }}>485 Likes</Text>
+                        </Icon>
+                      </View> */}
+                  </View>
+                  {/* </View> */}
+                  <Text />
+                </Card>
+              </View>
+            )
+            }
+          />
+        </View>
       </ScrollView>
-    </ScrollView>
+    </View>
   )
 }
 
@@ -394,10 +424,13 @@ const styles = StyleSheet.create({
     width: wp('90%'),
   },
   responsiveBox: {
-    width: wp('100%'),
+    width: '100%',
     backgroundColor: 'white',
     flexDirection: 'column',
+    height: "99%"
   },
+  category: { width: 60, height: 60, borderRadius: 50, justifyContent: "center", alignItems: "center" },
+  categorytext: { textAlign: 'center', color: 'black', fontSize: 10, marginTop: 8 }
 })
 
 export default EducatorHome

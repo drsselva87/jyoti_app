@@ -23,7 +23,8 @@ const LoginFifth = ({ navigation }) => {
   const [confirmPassword, onChangeConfirmPassword] = React.useState(null)
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <ScrollView horizontal>
+      {/* <ScrollView horizontal> */}
+      <View style={{ flexDirection: "row", alignItems: "center", marginTop: 70, }}>
         <View>
           <Image
             source={require('../../../Assets/Images/logo.png')}
@@ -31,12 +32,12 @@ const LoginFifth = ({ navigation }) => {
               width: 70,
               height: 70,
               borderRadius: 100,
-              marginTop: 70,
+
               marginLeft: 30,
             }}
           ></Image>
         </View>
-        <View style={{ marginTop: 90, marginLeft: 5 }}>
+        <View style={{ marginLeft: 5 }}>
           <Text
             style={{
               color: '#267900',
@@ -64,11 +65,13 @@ const LoginFifth = ({ navigation }) => {
                 fontFamily: 'Roboto',
               }}
             >
+              {' '}
               Studies
             </Text>
           </Text>
         </View>
-      </ScrollView>
+      </View>
+      {/* </ScrollView> */}
       <Text
         style={{
           color: '#0B774B',
@@ -89,15 +92,15 @@ const LoginFifth = ({ navigation }) => {
           fontSize: 14,
           fontFamily: 'Roboto',
           marginLeft: 30,
-          width: 200,
+          width: "80%",
           fontWeight: '400',
           marginTop: 20,
         }}
       >
         Enter the 4 digit code that you have received
       </Text>
-      <SafeAreaView marginTop={50}>
-        <ScrollView horizontal>
+      <SafeAreaView >
+        <View style={{ width: "100%", flexDirection: "row", marginTop: 40, justifyContent: "space-evenly" }}>
           <TextInput
             style={styles.input}
             onChangeText={onChangeText}
@@ -134,20 +137,17 @@ const LoginFifth = ({ navigation }) => {
             placeholderTextColor={'#0B774B'}
             backgroundColor="#F9FFFC"
           />
-        </ScrollView>
+        </View>
       </SafeAreaView>
       <Button
         type="solid"
         titleStyle={{ color: 'white', fontSize: 15 }}
         buttonStyle={{
           height: 50,
-          width: 300,
+          width: "80%",
           alignContent: 'center',
-          margin: 0,
-          flex: 1,
-          marginTop: 50,
-          paddingLeft: 0,
-          marginLeft: 30,
+          marginTop: 100,
+          alignSelf: "center",
           backgroundColor: '#0B774B',
           borderRadius: 12,
         }}
@@ -160,7 +160,7 @@ const LoginFifth = ({ navigation }) => {
         orientation="horizontal"
         color="#CDEFE9"
         width={1}
-        style={{ width: '100%', marginTop: 200 }}
+        style={{ width: '100%', marginTop: "68%" }}
       />
       <Text
         style={{
@@ -182,14 +182,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: 'white', width: "100%", height: "100%"
   },
   input: {
     height: 57,
     marginTop: 15,
     borderWidth: 1,
     borderColor: '#CDEFE9',
-    marginLeft: 28,
+
     width: 54,
     borderRadius: 4,
     textAlign: 'center',

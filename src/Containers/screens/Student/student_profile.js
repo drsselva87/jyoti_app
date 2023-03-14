@@ -34,7 +34,7 @@ export default function StudentProfile(props, navigation) {
       <Icon name="chevron-back-outline" size={27} color="black" />
 
 
-        <Text style={{ color: "#252525", marginLeft: "10%", fontSize: 16, fontWeight: "500" }}>Tutor Profile</Text>
+        <Text style={{ color: "#252525", marginLeft: "10%", fontSize: 16, fontWeight: "500" }}>Student Profile</Text>
 
 
 

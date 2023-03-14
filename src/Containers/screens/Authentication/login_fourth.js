@@ -23,20 +23,19 @@ const LoginFourth = ({ navigation }) => {
   const [confirmPassword, onChangeConfirmPassword] = React.useState(null)
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <ScrollView horizontal>
-        <View>
-          <Image
-            source={require('../../../Assets/Images/logo.png')}
-            style={{
-              width: 70,
-              height: 70,
-              borderRadius: 100,
-              marginTop: 70,
-              marginLeft: 30,
-            }}
-          ></Image>
-        </View>
-        <View style={{ marginTop: 90, marginLeft: 5 }}>
+      {/* <ScrollView horizontal> */}
+      <View style={{ flexDirection: "row", alignItems: "center", marginTop: 70, }}>
+        <Image
+          source={require('../../../Assets/Images/logo.png')}
+          style={{
+            width: 70,
+            height: 70,
+            borderRadius: 100,
+
+            marginLeft: 30,
+          }}
+        ></Image>
+        <View style={{ marginLeft: 5 }}>
           <Text
             style={{
               color: '#267900',
@@ -64,11 +63,14 @@ const LoginFourth = ({ navigation }) => {
                 fontFamily: 'Roboto',
               }}
             >
+                 {' '}
               Studies
             </Text>
           </Text>
         </View>
-      </ScrollView>
+      </View>
+
+      {/* </ScrollView> */}
       <Text
         style={{
           color: '#0B774B',
@@ -89,7 +91,7 @@ const LoginFourth = ({ navigation }) => {
           fontSize: 14,
           fontFamily: 'Roboto',
           marginLeft: 30,
-          width: 300,
+          width: "85%",
           fontWeight: '400',
           marginTop: 20,
         }}
@@ -113,13 +115,13 @@ const LoginFourth = ({ navigation }) => {
         titleStyle={{ color: 'white', fontSize: 15 }}
         buttonStyle={{
           height: 50,
-          width: 300,
+          width: "80%",
           alignContent: 'center',
-          margin: 0,
-          flex: 1,
+          alignSelf: "center",
+
           marginTop: 50,
-          paddingLeft: 0,
-          marginLeft: 30,
+
+
           backgroundColor: '#0B774B',
           borderRadius: 12,
         }}
@@ -132,7 +134,7 @@ const LoginFourth = ({ navigation }) => {
         orientation="horizontal"
         color="#CDEFE9"
         width={1}
-        style={{ width: '100%', marginTop: 200 }}
+        style={{ width: '100%', marginTop: "75%" }}
       />
       <Text
         style={{
@@ -154,16 +156,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: 'white', width: "100%", height: "100%"
   },
   input: {
     height: 50,
     marginTop: 15,
     borderWidth: 1,
     borderColor: '#CDEFE9',
-    marginLeft: 30,
+    alignSelf: "center",
     padding: 10,
-    width: 300,
+    width: "80%",
     borderRadius: 4,
   },
 })

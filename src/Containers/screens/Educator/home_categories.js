@@ -6,22 +6,80 @@ import {
   Image,
   ScrollView,
   TextInput,
-  Pressable,
+  Pressable, FlatList,
   Dimensions,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Card, SearchBar } from '@rneui/themed'
+// import { Card, SearchBar } from '@rneui/themed'
 import * as Progress from 'react-native-progress'
 import { Button } from '@rneui/base'
 // import NavTab from '../nav_tab'
+import { Card } from 'react-native-shadow-cards';
+
 
 const HomeCategories = ({ navigation }) => {
   var width = Dimensions.get('window').width //full width
   var height = Dimensions.get('window').height //full height
+  const DATA = [
+    {
+      title: 'Development',
+    },
+    {
+      title: 'IT & Software',
+    },
+    {
+      title: 'Finance',
+    },
+    {
+      title: 'Design',
+    },
+    {
+      title: 'Marketing',
+    },
+    {
+      title: 'Productivity',
+    },
+
+  ];
 
   return (
-    <ScrollView>
-      <Card
+    <View style={{ width: "100%", height: "100%" }}>
+      <FlatList
+        data={DATA}
+
+        renderItem={({ item, key }) => (
+          <Card style={{ flexDirection: "row", width: "100%", height: 50, alignItems: "center", justifyContent: "center", marginTop: 4, marginBottom: 4 }}>
+            <Image
+              source={require('../../../Assets/Images/development.jpeg')}
+              style={{
+                height: 25,
+                width: 25, marginLeft: 10
+              }}
+            />
+            <Text
+              numberOfLines={1}
+              style={{
+                color: 'black',
+                marginLeft: 25,
+                fontSize: 16, width: "72%"
+              }}
+            >
+              {item.title}
+            </Text>
+            <Icon
+              name="chevron-forward"
+              size={27}
+              style={{ marginLeft: 10, marginTop: 0 }}
+              color="black"
+            />
+          </Card>
+
+        )
+        }
+      />
+      {/* <ScrollView> */}
+
+      {/* <Card
         width={width}
         height={50}
         borderRadius={5}
@@ -171,9 +229,10 @@ const HomeCategories = ({ navigation }) => {
             color="black"
           />
         </ScrollView>
-      </Card>
-      {/* <NavTab marginTop={700} /> */}
-    </ScrollView>
+      </Card> */}
+
+      {/* </ScrollView> */}
+    </View>
   )
 }
 

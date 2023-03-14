@@ -60,8 +60,10 @@ const LoginSecond = ({ navigation }) => {
                 fontSize: 30,
                 fontWeight: 'bold',
                 fontFamily: 'Roboto',
+                
               }}
             >
+                 {' '}
               Studies
             </Text>
           </Text>

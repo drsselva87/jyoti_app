@@ -1,35 +1,30 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Card, SearchBar } from '@rneui/themed'
+import { SearchBar } from '@rneui/themed'
 import * as Progress from 'react-native-progress'
 import { Button } from '@rneui/base'
 // import NavTab from '../Commons/bottom_tab'
+import { Card } from 'react-native-shadow-cards';
+
 import { CoursesDetails } from '../../../Constants/Courses'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
+import { TextInput } from 'react-native-gesture-handler'
 
 const StudentSearchResult = ({ navigation }) => {
   return (
     <ScrollView style={styles.responsiveBox}>
-      <Card
-        width={wp('100%')}
-        height={hp('10%')}
-        borderRadius={5}
-        containerStyle={{ margin: 0, padding: 0 }}
+      <Card style={{ width: wp('100%'), height: 50, borderRadius: 5 }}
       >
         <View style={{ display: 'flex', flexDirection: 'row' }}>
-          <Card
-            height={hp('5%')}
-            borderRadius={10}
-            containerStyle={{
-              padding: 0,
-              marginTop: hp('2%'),
-              left: 0,
-              width: 30,
-            }}
+          <Card style={{
+            borderRadius: 10,
+            marginTop: hp('2%'),
+            width: 30, marginLeft: 10
+          }}
           >
             <Icon name="chevron-back-outline" size={27} color="black" />
           </Card>
@@ -45,8 +40,23 @@ const StudentSearchResult = ({ navigation }) => {
           </Text> */}
         </View>
       </Card>
-      <View style={{ height: hp('79%') }}>
-        <SearchBar
+      <View style={{ height: hp('87%'), backgroundColor: "white" }}>
+        <View style={{ flexDirection: "row", width: "90%", backgroundColor: "#DCFFF1", alignItems: "center", borderRadius: 5, alignSelf: "center", marginTop: 10 }}>
+          <Image
+            source={require('../../../Assets/search.png')}
+            style={{
+              width: 18,
+              height: 18, marginLeft: 15
+
+            }}
+          />
+          <TextInput placeholder="Search"
+            placeholderTextColor="#0B774B"
+            style={{ width: "90%", height: 50, marginLeft: 15 }}>
+
+          </TextInput>
+        </View>
+        {/* <SearchBar
           placeholder="Search"
           platform="android"
           lightTheme={true}
@@ -60,87 +70,92 @@ const StudentSearchResult = ({ navigation }) => {
             backgroundColor: '#DCFFF1',
             borderRadius: 5,
             width: wp('80%'),
-            height: hp('6%'),
+            height: 50,
             marginLeft: wp('5%'),
             marginTop: hp('1%'),
             borderWidth: 0,
           }}
-          inputContainerStyle={{ height: hp('5%'), width: 290 }}
-        />
-        <ScrollView
+          inputContainerStyle={{ width: 290,alignItems:"center" }}
+        /> */}
+        {/* <ScrollView
           vertical
           disableIntervalMomentum={true}
           snapToInterval={wp('100%')}
           marginLeft={20}
         >
-          {CoursesDetails.map((items, key) => (
-            <View key={key} style={{ marginTop: 20, height: 80 }}>
-              <Card.Image
-                source={items.img}
-                style={{
-                  width: 80,
-                  height: 80,
-                  marginLeft: 0,
-                  padding: 0,
-                  borderRadius: 50,
-                }}
-              >
-                <Text
+          {CoursesDetails.map((items, key) => ( */}
+          <View style={{height:"88%"}}>
+        <FlatList
+          data={CoursesDetails}
+
+          renderItem={({ item, key }) => (
+            <View key={key} style={{ marginTop: 3, alignSelf:"center",width:"95%",marginBottom:5}}>
+              <Card style={{ flexDirection: "row",alignItems:"center",width:"100%" ,marginTop:5 }}>
+                <Image
+                  source={item.img}
                   style={{
-                    width: wp('100%'),
-                    marginLeft: wp('22%'),
-                    fontSize: 13,
-                    top: 5,
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {items.course_name}
-                </Text>
-                <Text
-                  style={{
-                    width: wp('100%'),
-                    marginLeft: wp('22%'),
-                    fontSize: 10,
-                    marginTop: 9,
-                  }}
-                >
-                  {items.published_by}
-                </Text>
-              </Card.Image>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  marginLeft: wp('20%'),
-                }}
-              >
-                {items.rating.map((item, key) => (
-                  <Icon
-                    key={key}
-                    name="star"
+                    width: 60,
+                    height: 60,
+                    borderRadius: 50
+                  }}>
+                </Image>
+                <View>
+                  <Text
                     style={{
+                      fontSize: 13,
                       marginLeft: wp('2%'),
-                      marginTop: -35,
-                      color: '#FFC107',
+                      fontWeight: 'bold',marginTop:5
                     }}
-                  />
-                ))}
-              </View>
-              <Text
-                style={{
-                  width: wp('100%'),
-                  marginLeft: wp('23%'),
-                  fontSize: 11,
-                  top: 5,
-                  marginTop: -25,
-                  fontWeight: 'bold',
-                }}
-              >
-                $ 125
-              </Text>
+                  >
+                    {item.course_name}
+                  </Text>
+                  <Text
+                    style={{
+                      // width: wp('100%'),
+                      marginLeft: wp('2%'),
+                      fontSize: 10,
+                      color: "black",marginTop:5
+                    }}
+                  >
+                    {item.published_by}
+                  </Text>
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      flexWrap: 'wrap',
+                      marginTop:5
+                    }}
+                  >
+                    {item.rating.map((item, key) => (
+                      <Icon
+                        key={key}
+                        name="star"
+                        style={{
+                          marginLeft: wp('2%'),
+                          color: '#FFC107',
+                        }}
+                      />
+                    ))}
+                  </View>
+                  <Text
+                    style={{
+                      fontSize: 11,
+                      marginLeft: wp('2%'),
+                      fontWeight: 'bold',marginTop:5
+                    }}
+                  >
+                    $ 125
+                  </Text>
+                </View>
+              </Card>
+           
             </View>
-          ))}
-        </ScrollView>
+            
+          )
+          }
+        />
+</View>
       </View>
       {/* <NavTab /> */}
     </ScrollView>

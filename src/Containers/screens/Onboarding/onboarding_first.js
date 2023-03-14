@@ -23,8 +23,8 @@ const OnboardingFirst = ({ navigation }) => {
       image: require('../../../Assets/Images/girl.jpeg')
     },
     {
-      title: 'Hello, Welcome to GRIT Studies',
-      title1: 'Give yourself the BEST education has to offer',
+      title: 'Learn from professionals as tutors',
+      title1: 'Admissions are going on for Certified Courses. It is time to expand your horizons and pave the way for the future with GRIT Studies.',
       image: require('../../../Assets/Images/boy.jpeg')
     },
     {
@@ -142,7 +142,7 @@ const OnboardingFirst = ({ navigation }) => {
           Skip
         </Text>
       </Pressable>
-      <View style={{ width: "100%", height: "65%",marginTop:10 }}>
+      <View style={{ width: "100%",height:"75%", marginTop: 10 }}>
         <Swiper
           autoplay={true}
           timeout={2}
@@ -154,46 +154,51 @@ const OnboardingFirst = ({ navigation }) => {
             nextPos: false,
           }}>
 
-          <View style={{ width: "100%", height: "100%", alignItems: "center", }}>
+          <View style={{ width: "100%", alignItems: "center", }}>
             <Image style={styles.image} resizeMode='contain' source={require('../../../Assets/Images/girl.jpeg')} />
             <Text style={styles.text1}>Hello, Welcome to GRIT Studies</Text>
             <Text style={styles.text2}>Give yourself the BEST education has to offer</Text>
-          
+
           </View>
-          <View style={{ width: "100%", height: "100%", alignItems: "center", }}>
+          <View style={{ width: "100%", alignItems: "center", }}>
             <Image style={styles.image} source={require('../../../Assets/Images/boy.jpeg')} />
-            <Text style={styles.text1}>Hello, Welcome to GRIT Studies</Text>
-            <Text style={styles.text2}>Give yourself the BEST education has to offer</Text>
-          
+            <Text style={styles.text1}>Learn from professionals as tutors</Text>
+            <Text style={styles.text2}>Admissions are going on for
+              Certified Courses. It is time to expand
+              your horizons and pave the way
+              for the future with GRIT Studies.</Text>
+
           </View>
-          <View style={{ width: "100%", height: "100%", alignItems: "center", }}>
+          <View style={{ width: "100%", alignItems: "center", }}>
             <Image style={styles.image} source={require('../../../Assets/Images/boy_2.jpeg')} />
-            <Text style={styles.text1}>Hello, Welcome to GRIT Studies</Text>
-            <Text style={styles.text2}>Give yourself the BEST education has to offer</Text>
-           
+            <Text style={styles.text1}>Learn New Skills every day!</Text>
+            <Text style={styles.text2}>Making E-learning Affordable for millions.
+              We are the shapers of great minds and
+              honorable values for greater good.</Text>
+
           </View>
-          <View style={{ width: "100%", height: "100%", alignItems: "center", }}>
+          <View style={{ width: "100%", alignItems: "center", }}>
             <Image style={styles.image} source={require('../../../Assets/Images/girl_2.jpeg')} />
             <Text style={styles.text1}>Empowering Educators</Text>
             <Text style={styles.text2}>GRIT Studies empowers educators through well researched and customermade training programs bringing greater results for schools and colleges.</Text>
-       
+
           </View>
         </Swiper>
-      
+
       </View>
-<TouchableOpacity  onPress={() => navigation.navigate('LoginFirst')}>
-      <View style={styles.button}>
-   <Text style={{fontSize:19,color:"white",fontWeight:"bold"}}>Get Started</Text>
-   <Icon
-    style={styles.icons}
-        name="right"
-        size={20}
-        color="white"
-        
-      /> 
-   
-    </View>
-    </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('LoginFirst')}>
+        <View style={styles.button}>
+          <Text style={{ fontSize: 19, color: "white", fontWeight: "bold" }}>Get Started</Text>
+          <Icon
+            style={styles.icons}
+            name="right"
+            size={20}
+            color="white"
+
+          />
+
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -221,20 +226,22 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#747474',
   },
-  icons:{  
-      size: 30,
-      marginLeft:15
+  icons: {
+    size: 30,
+    marginLeft: 15
   },
   button:
-  {flexDirection:"row",
-  height: 50,
-          width: 220,
-          alignContent: 'center',
-          margin: 0,  
-          backgroundColor: '#0B774B',
-          alignItems:"center",
-          justifyContent:"center",
-          borderRadius:8}
+  {
+    flexDirection: "row",
+    height: 50,
+    width: 220,
+    alignContent: 'center',
+    margin: 0,
+    backgroundColor: '#0B774B',
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8
+  }
 })
 
 export default OnboardingFirst

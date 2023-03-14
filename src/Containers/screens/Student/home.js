@@ -5,7 +5,7 @@ import {
   View,
   ScrollView,
   Pressable, FlatList,
-  Image, StatusBar
+  Image, StatusBar, Touchable
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { SearchBar } from '@rneui/themed'
@@ -20,6 +20,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
 import { useSelector } from 'react-redux'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const StudentHome = ({ navigation }) => {
   const userEmail = useSelector(store => store.user.email)
@@ -101,7 +102,7 @@ const StudentHome = ({ navigation }) => {
               padding: 0,
               width: 30,
               height: 30,
-              borderRadius: 10, marginLeft: "40%"
+              borderRadius: 10,position:"absolute",right:20
             }}
           >
             <Icon
@@ -192,9 +193,11 @@ const StudentHome = ({ navigation }) => {
           data={DATA}
           numColumns={2}
           renderItem={({ item }) => (
+            <TouchableOpacity>
             <View style={{ borderWidth: 0.8, borderColor: '#0B774B', borderRadius: 8, marginLeft: 20, marginTop: 8 }}>
               <Text style={{ color: "#0B774B", fontSize: 12, margin: 5, fontWeight: "500" }}>{item.title}</Text>
             </View>
+            </TouchableOpacity>
 
           )
           }
@@ -369,6 +372,7 @@ const StudentHome = ({ navigation }) => {
                   }} ></Image>
                 <View>
                   <Text
+                  numberOfLines={3}
                     style={{
                       width: 90,
                       marginLeft: 10,
@@ -405,7 +409,7 @@ const StudentHome = ({ navigation }) => {
                       <Icon
                         key={key}
                         name="star"
-                        style={{ marginLeft: 10, marginTop: 10, color: '#FFC107' }}
+                        style={{ marginLeft: 10, marginTop: 15, color: '#FFC107' }}
                       />
                     ))}
                   </View>

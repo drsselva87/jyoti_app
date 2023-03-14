@@ -7,10 +7,12 @@ import {
   ScrollView,
   TextInput,
   Pressable,
-  Dimensions,
+  Dimensions,TouchableOpacity
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Card, SearchBar } from '@rneui/themed'
+import { Card } from 'react-native-shadow-cards';
+
+// import { Card, SearchBar } from '@rneui/themed'
 import * as Progress from 'react-native-progress'
 import { Button } from '@rneui/base'
 import { CoursesDetails } from '../../../Constants/Courses'
@@ -22,150 +24,69 @@ import {
 const UploadContent = ({ navigation }) => {
   const [text, onChangeText] = useState('Video Title')
   return (
-    <ScrollView style={styles.responsiveBox}>
-      <Card
-        width={wp('100%')}
-        height={hp('10%')}
-        borderRadius={5}
-        containerStyle={{ margin: 0, padding: 0 }}
-      >
-        <View style={{ display: 'flex', flexDirection: 'row' }}>
-          <Card
-            height={hp('5%')}
-            borderRadius={10}
-            containerStyle={{
-              padding: 0,
-              marginTop: hp('2%'),
-              left: 0,
-              width: 30,
-            }}
-          >
-            <Icon name="chevron-back-outline" size={27} color="black" />
-          </Card>
-          <Text
-            style={{
-              color: 'black',
-              marginLeft: wp('1%'),
-              marginTop: hp('3%'),
-              fontSize: 16,
-            }}
-          >
-            Upload Content
-          </Text>
-        </View>
-      </Card>
-      <View
-        style={{
-          height: hp('79%'),
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          alignContent: 'center',
-        }}
-      >
-        <TextInput
-          style={{
-            height: 60,
-            width: wp('80%'),
-            margin: 20,
-            borderWidth: 1,
-            padding: 10,
-            backgroundColor: '#F9FFFC',
-            color: 'gray',
-            borderRadius: 5,
-            borderColor: '#CDEFE9',
-          }}
-          value={text}
-          onChange={onChangeText}
-        />
-        <Text
-          style={{
-            fontSize: 16,
-            marginTop: 9,
-            color: 'black',
-          }}
-        >
-          Upload Videos
-        </Text>
-        <View style={{ display: 'flex', flexDirection: 'row' }}>
-          <Card
-            containerStyle={{
-              backgroundColor: '#D8FFF2',
-              width: 100,
-              height: 100,
-              borderColor: '#CDEFE9',
-              alignItems: 'center',
-              justifyContent: 'center',
-              paddingBottom: 0,
-              borderRadius: 5,
-            }}
-          >
-            <Icon
-              name="camera"
-              color="#27BC7F"
-              size={40}
-              style={{ marginLeft: 30 }}
-            />
-            <Text
-              style={{
-                backgroundColor: '#27BC7F',
-                color: 'black',
-                width: 100,
-                paddingLeft: 10,
-                marginTop: 20,
-              }}
+    <View style={{ width: "100%", height: "100%" }}>
+
+
+
+    <View style={{ width: "100%", height: 61, flexDirection: "row", alignItems: "center", }} >
+        <TouchableOpacity onPress={() => back()}>
+            <Card style={{ width: 30, height: 30, justifyContent: "center", alignItems: "center", marginLeft: 15 }}>
+                <Image style={{ width: 7.1, height: 15.84, resizeMode: "contain", }} source={require("../../../Assets/back.png")} />
+            </Card>
+        </TouchableOpacity>
+        <Text style={{ color: "#252525", marginLeft: 15, fontSize: 16, fontWeight: "500" }}>Upload Content</Text>
+
+    </View>
+    <View style={{ height: "85%" }}>
+
+        <ScrollView>
+
+            <View style={{ borderWidth: 1, borderColor: "#CDEFE9", backgroundColor: "#F9FFFC", width: "90%", alignSelf: "center", marginTop: "5%" }}>
+                <Text style={{ marginLeft: 30, marginTop: 15, marginBottom: 15, color: "#747474", fontSize: 14, fontWeight: "400" }}>Video Title</Text>
+            </View>
+            <Text style={{ textAlign: "center", fontSize: 16, fontWeight: "400", marginTop: 25, color: "#464646" }}>Upload Video</Text>
+
+            <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", marginTop: 30 }}>
+            {/* <VideoRecorder ref={cameraRef} /> */}
+            <TouchableOpacity 
+            // onPress={ () => videoRecord() }
             >
-              Take Video
-            </Text>
-          </Card>
-          <Card
-            containerStyle={{
-              backgroundColor: '#D8FFF2',
-              width: 100,
-              height: 100,
-              borderColor: '#CDEFE9',
-              alignItems: 'center',
-              justifyContent: 'center',
-              paddingBottom: 0,
-              borderRadius: 5,
-            }}
-          >
-            <Icon
-              name="image"
-              color="#27BC7F"
-              size={40}
-              style={{ marginLeft: 30 }}
-            />
-            <Text
-              style={{
-                backgroundColor: '#27BC7F',
-                color: 'black',
-                width: 100,
-                paddingLeft: 21,
-                marginTop: 20,
-              }}
-            >
-              Gallery
-            </Text>
-          </Card>
-        </View>
-        <Button
-          type="solid"
-          titleStyle={{ color: 'white', fontSize: 15 }}
-          buttonStyle={{
-            width: 300,
-            marginTop: 100,
-            alignContent: 'center',
-            backgroundColor: '#0B774B',
-            borderRadius: 12,
-          }}
-        >
-          Submit
-        </Button>
-      </View>
-      <View />
-    </ScrollView>
+                <View style={{ width: 98, height: 116, backgroundColor: "#D8FFF2", borderWidth: 1, borderColor: "rgba(39, 188, 127, 0.3)", borderRadius: 4 }}>
+                    <Image style={{ width: 33.33, height: 24.62, resizeMode: "contain", alignSelf: "center", marginTop: 25 }} source={require("../../../Assets/camera.png")} />
+                    <View style={{ backgroundColor: "#27BC7F", position: "absolute", bottom: 0, width: "100%" }}>
+                        <Text style={{ textAlign: "center", fontSize: 12, fontWeight: "400", color: "#2B2B2B", marginTop: 10, marginBottom: 10 }}>Take Video</Text>
+                    </View>
+                </View>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                // onPress={()=>
+                //   chooseFile("video")}
+                  >
+                <View style={{ width: 98, height: 116, backgroundColor: "#EBEBEB", marginLeft: 25, borderWidth: 1, borderColor: "#8D8D8D", borderRadius: 4 }}>
+                    <Image style={{ width: 33.33, height: 24.62, resizeMode: "contain", alignSelf: "center", marginTop: 25 }} source={require("../../../Assets/gallery.png")} />
+                    <View style={{ backgroundColor: "#ACACAC", position: "absolute", bottom: 0, width: "100%" }}>
+                        <Text style={{ textAlign: "center", fontSize: 12, fontWeight: "400", color: "#2B2B2B", marginTop: 10, marginBottom: 10 }}>Gallery</Text>
+                    </View>
+                </View>
+                </TouchableOpacity>
+                
+            </View>
+
+            <View>
+
+            </View>
+
+            <View style={{ height: 50, width: "68%", alignSelf: "center", backgroundColor: "#0B774B", borderRadius: 8, borderColor: "#EEFCF6", borderWidth: 0.5, marginTop: 30, justifyContent: "center", alignItems: "center" }}>
+                <Text style={{ fontSize: 16, fontWeight: "400", color: "#FFFFFF" }}>Submit</Text>
+            </View>
+        </ScrollView>
+
+
+    </View>
+
+
+
+</View>
   )
 }
 

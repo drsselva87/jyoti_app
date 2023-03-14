@@ -147,7 +147,7 @@ const SignupEmail = ({ navigation }) => {
                 color: '#00C5E4',
                 fontSize: 30,
                 fontWeight: 'bold',
-                fontFamily: 'Roboto',
+                fontFamily: 'LeagueSpartan',
               }}
             >
               {' '}

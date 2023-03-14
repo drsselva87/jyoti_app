@@ -12,8 +12,8 @@ const NavTab = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { fontSize: 12 },
-          tabBarItemStyle: { width: 100 },
+          tabBarLabelStyle: { fontSize: 11 },
+          tabBarItemStyle: { width: 93 },
           tabBarStyle: { backgroundColor: 'white' },
         }}
       >

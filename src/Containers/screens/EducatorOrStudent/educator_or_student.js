@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image,StatusBar } from 'react-native'
 import { Button } from '@react-native-material/core'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
@@ -12,24 +12,28 @@ import { color } from 'react-native-reanimated'
 const EducatorOrStudent = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View
+      <StatusBar
+        backgroundColor="#27BC7F"
+        barStyle="dark-content"
+      />
+      {/* <View
         style={{
-          display: 'flex',
+          
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           marginTop: 100,
         }}
-      >
+      > */}
         <Image
           source={require('../../../Assets/Images/logo.png')}
-          style={{ width: 200, height: 200, marginTop: 0 }}
+          style={{ width: 190, height: 190, marginTop: 0 ,resizeMode:"contain"}}
         />
         <Text
           style={{
             marginTop: 0,
             color: '#267900',
-            fontSize: 40,
+            fontSize: 35,
             fontWeight: 'bold',
             fontFamily: 'Roboto',
           }}
@@ -39,7 +43,7 @@ const EducatorOrStudent = ({ navigation }) => {
             style={{
               marginTop: 0,
               color: '#FF6E15',
-              fontSize: 40,
+              fontSize: 35,
               fontWeight: 'bold',
               fontFamily: 'Roboto',
             }}
@@ -51,7 +55,7 @@ const EducatorOrStudent = ({ navigation }) => {
               marginTop: 0,
               paddingLeft: 50,
               color: '#00C5E4',
-              fontSize: 40,
+              fontSize: 35,
               fontWeight: 'bold',
               fontFamily: 'Roboto',
             }}
@@ -60,13 +64,14 @@ const EducatorOrStudent = ({ navigation }) => {
             Studies
           </Text>
         </Text>
-        <Text>Select Your Choice</Text>
+        {/* <Text>Select Your Choice</Text> */}
         <Button
           title="Student"
+          uppercase={false}
           leading={<Icon name="school" style={{ color: 'white' }} />}
           style={{
             backgroundColor: '#0B774B',
-            width: 300,
+            width: "60%",
             height: 50,
             color: 'white',
             marginVertical: 20,
@@ -76,19 +81,20 @@ const EducatorOrStudent = ({ navigation }) => {
         />
         <Button
           title="Educator"
+          uppercase={false}
           leading={
             <FontIcon name="chalkboard-teacher" style={{ color: 'white' }} />
           }
           style={{
             backgroundColor: '#0B774B',
-            width: 300,
+            width: "60%",
             height: 50,
             color: 'white',
             paddingVertical: 7,
           }}
           onPress={() => navigation.navigate('Educator')}
         />
-      </View>
+      {/* </View> */}
     </ScrollView>
   )
 }
@@ -99,8 +105,8 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'white',
-    paddingRight: 10,
-    height: hp('100%'),
+   
+    height: "100%",width:"100%",justifyContent:"center",alignItems:"center"
   },
   linearGradient: {
     padding: 10,

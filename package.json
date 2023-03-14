@@ -33,6 +33,8 @@
     "react": "18.0.0",
     "react-i18next": "^11.18.3",
     "react-native": "0.69.3",
+    "react-native-beautiful-video-recorder": "^2.0.1",
+    "react-native-camera": "^4.2.1",
     "react-native-chart-kit": "^6.12.0",
     "react-native-flipper": "^0.156.0",
     "react-native-gesture-handler": "^2.8.0",

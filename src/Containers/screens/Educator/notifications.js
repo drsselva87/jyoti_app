@@ -1,182 +1,149 @@
-import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TextInput,
-  Pressable,
-  Dimensions,
-} from 'react-native'
+import React, { useState, useEffect, Component } from 'react';
+import { View, Text, TouchableOpacity, Image, Dimensions, Pressable, ImageBackground, Animated, FlatList, Modal, ScrollView } from 'react-native';
+import { List } from 'react-native-paper';
+import { Card } from 'react-native-shadow-cards';
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Card, SearchBar } from '@rneui/themed'
-import * as Progress from 'react-native-progress'
-import { Button } from '@rneui/base'
-import { CoursesDetails } from '../../../Constants/Courses'
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen'
-import { Divider } from 'react-native-paper'
 
-const Notifications = ({ navigation }) => {
+
+
+
+export default function Notification(props, navigation) {
+
+
+  const { width, height } = Dimensions.get("window")
+
+  const [DATA, setdata] = useState([
+
+    {
+
+      title: "New update available. get new features from playstore download now."
+
+    },
+    {
+
+      title: "New update available. get new features from playstore download now.",
+
+    },
+    {
+
+      title: 'New update available. get new features from playstore download now.',
+
+    },
+    {
+
+      title: 'New update available. get new features from playstore download now.',
+
+    },
+  ])
+
+  const [DATA1, setdata1] = useState([
+
+    {
+
+      title: "New update available. get new features from playstore download now."
+
+    },
+    {
+
+      title: "New update available. get new features from playstore download now.",
+
+    },
+    {
+
+      title: 'New update available. get new features from playstore download now.',
+
+    },
+    {
+
+      title: 'New update available. get new features from playstore download now.',
+
+    },
+    {
+
+      title: "New update available. get new features from playstore download now."
+
+    },
+    {
+
+      title: "New update available. get new features from playstore download now.",
+
+    },
+    {
+
+      title: 'New update available. get new features from playstore download now.',
+
+    },
+    {
+
+      title: 'New update available. get new features from playstore download now.',
+
+    },
+  ])
+
   return (
-    <ScrollView style={styles.responsiveBox}>
-      <Card
-        width={wp('100%')}
-        height={hp('10%')}
-        borderRadius={5}
-        containerStyle={{ margin: 0, padding: 0 }}
-      >
-        <View style={{ display: 'flex', flexDirection: 'row' }}>
-          <Card
-            height={hp('5%')}
-            borderRadius={10}
-            containerStyle={{
-              padding: 0,
-              marginTop: hp('2%'),
-              left: 0,
-              width: 30,
-            }}
-          >
+    <View style={{ width: "100%", height: "100%" }}>
+
+
+
+      <View style={{ width: "100%", height: 61, flexDirection: "row", alignItems: "center", }} >
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
+          <Card style={{ width: 30, height: 30, justifyContent: "center", alignItems: "center", marginLeft: 15 }}>
             <Icon name="chevron-back-outline" size={27} color="black" />
           </Card>
-          <Text
-            style={{
-              color: 'black',
-              marginLeft: wp('1%'),
-              marginTop: hp('3%'),
-              fontSize: 16,
-            }}
-          >
-            Notification
-          </Text>
-        </View>
-      </Card>
-      <View style={{ height: hp('79%'), padding: 10 }}>
-        <ScrollView
-          vertical
-          disableIntervalMomentum={true}
-          snapToInterval={wp('100%')}
-        >
-          <Text style={{ color: 'black', marginLeft: 20 }}>
-            You have <Text style={{ color: 'green' }}>2 notifications</Text>{' '}
-            today.
-          </Text>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              marginTop: 10,
-              marginLeft: 20,
-            }}
-          >
-            Today
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 14,
-              marginTop: 10,
-              marginLeft: 20,
-              width: 350,
-            }}
-          >
-            New update available. get new features from playstore download now.
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 14,
-              marginTop: 10,
-              marginLeft: 20,
-              width: 350,
-            }}
-          >
-            New update available. get new features from playstore download now.
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 14,
-              marginTop: 10,
-              marginLeft: 20,
-              width: 350,
-            }}
-          >
-            New update available. get new features from playstore download now.
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              marginTop: 10,
-              marginLeft: 20,
-            }}
-          >
-            This Week
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 14,
-              marginTop: 10,
-              marginLeft: 20,
-              width: 350,
-            }}
-          >
-            New update available. get new features from playstore download now.
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 14,
-              marginTop: 10,
-              marginLeft: 20,
-              width: 350,
-            }}
-          >
-            New update available. get new features from playstore download now.
-          </Text>
-          <Divider />
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 14,
-              marginTop: 10,
-              marginLeft: 20,
-              width: 350,
-            }}
-          >
-            New update available. get new features from playstore download now.
-          </Text>
-        </ScrollView>
+        </TouchableOpacity>
+        <Text style={{ color: "#252525", marginLeft: 15, fontSize: 16, fontWeight: "500" }}>Notification</Text>
+
       </View>
-    </ScrollView>
+      <View style={{ height: "91%" }}>
+
+        <ScrollView>
+
+          <Text style={{ fontSize: 16, fontWeight: "400", marginLeft: 12, color: "#252525", marginTop: 15 }}>You have <Text style={{ color: "#27BC7F" }}>2 notifications</Text> today.</Text>
+
+
+          <Text style={{ fontSize: 20, fontWeight: "400", marginLeft: 12, color: "#252525", marginTop: 15 }}>Today</Text>
+          <View style={{ marginTop: 15 }}>
+            <FlatList
+              data={DATA}
+
+              renderItem={({ item, index }) => (
+
+                <View>
+                  <View style={{ width: "100%", height: 1, backgroundColor: "#979797" }}></View>
+
+                  <Text style={{ width: "90%", alignSelf: "center", fontSize: 16, fontWeight: "400", lineHeight: 20, marginTop: 10, marginBottom: 10, color: "#616161" }}>{item.title}</Text>
+                </View>
+              )
+              }
+            />
+          </View>
+          <View style={{ width: "100%", height: 1, backgroundColor: "#979797" }}></View>
+          <Text style={{ fontSize: 20, fontWeight: "400", marginLeft: 12, color: "#252525", marginTop: 15 }}>This Week</Text>
+          <View style={{ marginTop: 15 }}>
+            <FlatList
+              data={DATA1}
+
+              renderItem={({ item, index }) => (
+
+                <View>
+                  <View style={{ width: "100%", height: 1, backgroundColor: "#979797" }}></View>
+
+                  <Text style={{ width: "90%", alignSelf: "center", fontSize: 16, fontWeight: "400", lineHeight: 20, marginTop: 10, marginBottom: 10, color: "#616161" }}>{item.title}</Text>
+                </View>
+              )
+              }
+            />
+          </View>
+        </ScrollView>
+
+
+      </View>
+
+
+
+    </View>
+
+
+
   )
 }
-
-const styles = StyleSheet.create({
-  baseText: {
-    fontFamily: 'Roboto',
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  responsiveBox: {
-    width: wp('100%'),
-    height: hp('17%'),
-    flexDirection: 'column',
-    backgroundColor: 'white',
-  },
-})
-
-export default Notifications

@@ -17,16 +17,16 @@ const Splash = ({ navigation }) => {
       <View>
         <Image
           source={require('../../../Assets/Images/logo.png')}
-          style={{ width: 200, height: 200, marginTop: 0 }}
+          style={{ width: 190, height: 190, marginTop: 0 }}
         />
       </View>
       <Text
         style={{
           marginTop: 0,
           color: '#267900',
-          fontSize: 40,
+          fontSize: 35,
           fontWeight: 'bold',
-          fontFamily: 'Roboto',
+          fontFamily: 'Roboto',marginTop:10
         }}
       >
         GR
@@ -34,7 +34,7 @@ const Splash = ({ navigation }) => {
           style={{
             marginTop: 0,
             color: '#FF6E15',
-            fontSize: 40,
+            fontSize: 35,
             fontWeight: 'bold',
             fontFamily: 'Roboto',
           }}
@@ -46,7 +46,7 @@ const Splash = ({ navigation }) => {
             marginTop: 0,
             paddingLeft: 50,
             color: '#00C5E4',
-            fontSize: 40,
+            fontSize: 35,
             fontWeight: 'bold',
             fontFamily: 'Roboto',
           }}

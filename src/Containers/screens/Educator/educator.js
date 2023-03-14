@@ -7,13 +7,12 @@ import {
 } from 'react-native-responsive-screen'
 import NavTab from '../Commons/educator_bottom_tab'
 import { createAppContainer } from 'react-navigation'
-
+import Dashboard from './dashboard'
 // import NavTab from './bottomNavTab'
-
 const Navigator = createAppContainer(NavTab)
-
 const Educator = ({ navigation }) => {
-  return <Navigator />
+  return <Dashboard
+  />
 }
 
 const styles = StyleSheet.create({

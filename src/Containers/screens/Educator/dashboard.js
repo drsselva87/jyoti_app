@@ -1,7 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { Card } from '@rneui/themed'
+// import { Card } from '@rneui/themed'
+import { Card } from 'react-native-shadow-cards';
+
 import { Avatar, Surface, Button } from '@react-native-material/core'
 import {
   widthPercentageToDP as wp,
@@ -13,299 +15,277 @@ import NavTab from './topNavTab'
 const Dashboard = ({ navigation }) => {
   return (
     <>
-      <ScrollView contentContainerStyle={styles.responsiveBox}>
-        <Card
-          width={wp('100%')}
-          borderRadius={5}
-          containerStyle={{ backgroundColor: 'white', margin: 0, padding: 0 }}
-        >
-          <View style={{ display: 'flex', flexDirection: 'row', padding: 10 }}>
-            <View marginTop={20}>
-              <Icon name="menu-outline" size={27} color="black" />
+      <View style={styles.responsiveBox}>
+        <ScrollView>
+          <Card style={{ width: "100%", borderRadius: 5, backgroundColor: 'white', justifyContent: "center", height: 50 }}
+
+          >
+            <View style={{ flexDirection: 'row', }}>
+              <View>
+                <Icon name="menu-outline" size={27} color="black" />
+              </View>
+              <View style={{ width: "80%" }} >
+                <Text style={{ color: 'black', fontSize: 22, textAlign: "center" }}>Dashboard</Text>
+              </View>
+              <Image
+                source={require('../../../Assets/Images/avatar.jpeg')}
+                style={{ width: 38, height: 38, resizeMode: "contain", borderRadius: 50 }}
+              />
             </View>
-            <View marginTop={20} marginLeft={wp('25%')}>
-              <Text style={{ color: 'black', fontSize: 22 }}>Dashboard</Text>
-            </View>
-            <Avatar
-              image={require('../../../Assets/Images/avatar.jpeg')}
-              style={{ marginLeft: '20%' }}
-            />
-          </View>
-        </Card>
-        <NavTab />
-        <View
-          style={{ width: wp('100%'), marginLeft: wp('5%'), marginTop: 10 }}
-        >
-          <Text style={{ color: 'black' }}>Students Joined</Text>
-          <LineChart
-            data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-              datasets: [
-                {
-                  data: [20, 45, 28, 80, 99, 43],
+          </Card>
+          <NavTab />
+          <View
+            style={{ width: wp('100%'), marginLeft: wp('5%'), marginTop: 10 }}
+          >
+            <Text style={{ color: 'black' }}>Students Joined</Text>
+            <LineChart
+              data={{
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [
+                  {
+                    data: [20, 45, 28, 80, 99, 43],
+                  },
+                ],
+              }}
+              width={wp('90%')} // from react-native
+              height={220}
+              yAxisLabel=""
+              yAxisSuffix=""
+              yAxisInterval={1} // optional, defaults to 1
+              chartConfig={{
+                backgroundColor: '#27BC7F',
+                backgroundGradientFrom: '#80EBBF',
+                backgroundGradientTo: '#27BC7F',
+                decimalPlaces: 0, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                style: {
+                  borderRadius: 16,
                 },
-              ],
-            }}
-            width={wp('90%')} // from react-native
-            height={220}
-            yAxisLabel=""
-            yAxisSuffix=""
-            yAxisInterval={1} // optional, defaults to 1
-            chartConfig={{
-              backgroundColor: '#27BC7F',
-              backgroundGradientFrom: '#80EBBF',
-              backgroundGradientTo: '#27BC7F',
-              decimalPlaces: 0, // optional, defaults to 2dp
-              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              style: {
-                borderRadius: 16,
-              },
-              propsForDots: {
-                r: '6',
-                strokeWidth: '2',
-                stroke: '#ffa726',
-              },
-            }}
-            bezier
-            style={{
-              marginVertical: 8,
-              borderRadius: 16,
-            }}
-          />
-        </View>
-        <View style={{ width: wp('95%') }}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
-              Attendance Details
-            </Text>
-            <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
-              View All
-            </Text>
-          </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              paddingRight: 10,
-            }}
-          >
-            <Surface
-              style={{
-                width: 180,
-                height: 270,
-                borderRadius: 16,
-                margin: 10,
-                padding: 10,
+                propsForDots: {
+                  r: '6',
+                  strokeWidth: '2',
+                  stroke: '#ffa726',
+                },
               }}
-            >
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ color: 'black' }}>Mentors</Text>
-                <Text style={{ color: 'black' }}>View all</Text>
-              </View>
-              <Image
-                style={{ margin: 20 }}
-                source={require('../../../Assets/Images/mentor.jpeg')}
-              />
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ color: 'black' }}>Total Teachers</Text>
-                <Text style={{ color: 'black' }}>108</Text>
-              </View>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ color: 'black' }}>Present</Text>
-                <Text style={{ color: 'black' }}>104</Text>
-              </View>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Button
-                  title="Add"
-                  color="#00AB65"
-                  titleStyle={{ color: 'white', fontSize: 10 }}
-                />
-                <Button
-                  variant="outlined"
-                  title="Remove"
-                  color="#00AB65"
-                  width={85}
-                  titleStyle={{ fontSize: 10 }}
-                />
-              </View>
-            </Surface>
-            <Surface
+              bezier
               style={{
-                width: 180,
-                height: 270,
+                marginVertical: 8,
                 borderRadius: 16,
-                margin: 10,
-                padding: 10,
               }}
-            >
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ color: 'black' }}>Mentors</Text>
-                <Text style={{ color: 'black' }}>View all</Text>
-              </View>
-              <Image
-                style={{ margin: 20 }}
-                source={require('../../../Assets/Images/learner.jpeg')}
-              />
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ color: 'black' }}>Total Teachers</Text>
-                <Text style={{ color: 'black' }}>108</Text>
-              </View>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ color: 'black' }}>Present</Text>
-                <Text style={{ color: 'black' }}>104</Text>
-              </View>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Button
-                  title="Add"
-                  color="#00AB65"
-                  titleStyle={{ color: 'white', fontSize: 10 }}
-                />
-                <Button
-                  variant="outlined"
-                  title="Remove"
-                  color="#00AB65"
-                  width={85}
-                  titleStyle={{ fontSize: 10 }}
-                />
-              </View>
-            </Surface>
+            />
           </View>
           <View style={{ width: wp('95%') }}>
             <View
               style={{
-                display: 'flex',
+
                 flexDirection: 'row',
                 justifyContent: 'space-between',
+                marginTop: 10
               }}
             >
               <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
-                Recent Transaction
+                Attendance Details
               </Text>
               <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
-                View all
+                View All
               </Text>
             </View>
-            <ScrollView>
-              <Surface
+            <View style={{ width: "100%", justifyContent: "space-evenly", flexDirection: "row", marginTop: 15 }}>
+              <Card style={{ width: "45%" }}>
+                <View style={{ flexDirection: "row", justifyContent: 'space-around',marginTop:10 }}>
+                  <Text style={{ color: 'black' }}>Mentors</Text>
+                  <Text style={{ color: 'black' }}>View all</Text>
+
+                </View>
+                <Image
+                  style={{ margin: 20 }}
+                  source={require('../../../Assets/Images/mentor.jpeg')}
+                />
+
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Text style={{ color: 'black', fontSize: 10 ,width:"60%",marginLeft:10 }}>Total Teachers</Text>
+                  <Text style={{ color: 'black', fontSize: 10,width:"20%"   }}>108</Text>
+                  <Image
+                  style={{ }}
+                  source={require('../../../Assets/right.png')}
+                />
+                </View>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',marginTop:5
+
+                  }}
+                >
+                  <Text style={{  color: 'black', fontSize: 10 ,width:"60%",marginLeft:10 }}>Present</Text>
+                  <Text style={{  color: 'black', fontSize: 10,width:"20%" }}>104</Text>
+                  <Image
+                  style={{ }}
+                  source={require('../../../Assets/right.png')}
+                />
+                </View>
+                <View
                 style={{
-                  width: wp('100%'),
-                  height: 80,
-                  padding: 10,
-                  marginLeft: wp('1%'),
+                
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',marginTop:10,marginBottom:10
                 }}
               >
-                <View style={{ display: 'flex', flexDirection: 'row' }}>
-                  <Avatar
-                    image={require('../../../Assets/Images/avatar.jpeg')}
-                  />
-                  <View style={{ padding: 10 }}>
-                    <Text style={{ color: 'black' }}>
-                      Paid to Syndra Thomas
-                    </Text>
-                    <Text style={{ color: 'black' }}>12:48 am, 2 days ago</Text>
-                  </View>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      padding: 10,
-                      marginLeft: 30,
-                      color: '#00AB65',
-                    }}
-                  >
-                    9800 INR
-                  </Text>
+             <View style={{backgroundColor:"#00AB65",borderRadius:4}}>
+              <Text style={{margin:7,color:"white",fontSize:10}}>Add</Text>
+             </View>
+             <View style={{borderColor:"#00AB65",borderWidth:1,borderRadius:4}}>
+              <Text style={{margin:7,color:"#00AB65",fontSize:10}}>Remove</Text>
+             </View>
+              </View>
+              </Card>
+
+              <Card style={{ width: "45%" }}>
+                <View style={{ flexDirection: "row", justifyContent: 'space-around',marginTop:10 }}>
+                  <Text style={{ color: 'black' }}>Learners</Text>
+                  <Text style={{ color: 'black' }}>View all</Text>
+
                 </View>
-              </Surface>
-              <Surface
+                <Image
+                style={{ margin: 20 }}
+                source={require('../../../Assets/Images/learner.jpeg')}
+              />
+              
+              <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Text style={{ color: 'black', fontSize: 10 ,width:"60%",marginLeft:10 }}>Total Learners</Text>
+                  <Text style={{ color: 'black', fontSize: 10,width:"20%"   }}>108</Text>
+                  <Image
+                  style={{ }}
+                  source={require('../../../Assets/right.png')}
+                />
+                </View>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',marginTop:5
+
+                  }}
+                >
+                  <Text style={{  color: 'black', fontSize: 10 ,width:"60%",marginLeft:10 }}>Present</Text>
+                  <Text style={{  color: 'black', fontSize: 10,width:"20%" }}>104</Text>
+                  <Image
+                  style={{ }}
+                  source={require('../../../Assets/right.png')}
+                />
+                </View>
+                <View
                 style={{
-                  width: wp('100%'),
-                  height: 80,
-                  padding: 10,
-                  marginLeft: wp('1%'),
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',marginTop:10,marginBottom:10
                 }}
               >
-                <View style={{ display: 'flex', flexDirection: 'row' }}>
-                  <Avatar
-                    image={require('../../../Assets/Images/avatar.jpeg')}
-                  />
-                  <View style={{ padding: 10 }}>
-                    <Text style={{ color: 'black' }}>
-                      Paid to Syndra Thomas
+             <View style={{backgroundColor:"#00AB65",borderRadius:4}}>
+              <Text style={{margin:7,color:"white",fontSize:10}}>Add</Text>
+             </View>
+             <View style={{borderColor:"#00AB65",borderWidth:1,borderRadius:4}}>
+              <Text style={{margin:7,color:"#00AB65",fontSize:10}}>Remove</Text>
+             </View>
+              </View>
+              </Card>
+            </View>
+
+            <View style={{ width: wp('95%') }}>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',marginTop:15
+                }}
+              >
+                <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
+                  Recent Transaction
+                </Text>
+                <Text style={{ marginLeft: wp('5%'), color: 'black' }}>
+                  View all
+                </Text>
+              </View>
+              <ScrollView>
+                <Surface
+                  style={{
+                    width: wp('100%'),
+                    height: 80,
+                    padding: 10,
+                    marginLeft: wp('1%'),
+                    marginTop:5
+                  }}
+                >
+                  <View style={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+                    <Image style={{width:50,borderRadius:50,height:50,borderRadius:50}}
+                      source={require('../../../Assets/Images/avatar.jpeg')}
+                    />
+                    <View style={{marginLeft:5}}>
+                      <Text style={{ color: 'black',fontSize:14 }}>
+                        Paid to Syndra Thomas
+                      </Text>
+                      <Text style={{ color: '#848484',fontSize:12 }}>12:48 am, 2 days ago</Text>
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        padding: 10,
+                        marginLeft: 30,
+                        color: '#00AB65',
+                      }}
+                    >
+                      9800 INR
                     </Text>
-                    <Text style={{ color: 'black' }}>12:48 am, 2 days ago</Text>
                   </View>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      padding: 10,
-                      marginLeft: 30,
-                      color: '#00AB65',
-                    }}
-                  >
-                    9800 INR
-                  </Text>
-                </View>
-              </Surface>
-            </ScrollView>
+                </Surface>
+                <Surface
+                  style={{
+                    width: wp('100%'),
+                    height: 80,
+                    padding: 10,
+                    marginLeft: wp('1%'),
+                  }}
+                >
+                  <View style={{ display: 'flex', flexDirection: 'row',alignItems:"center" }}>
+                    <Image  style={{width:50,borderRadius:50,height:50,borderRadius:50}}
+                      source={require('../../../Assets/Images/avatar.jpeg')}
+                    />
+                    <View style={{ marginLeft:5 }}>
+                      <Text style={{ color: 'black',fontSize:14 }}>
+                        Paid to Syndra Thomas
+                      </Text>
+                      <Text style={{ color: '#848484',fontSize:12  }}>12:48 am, 2 days ago</Text>
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        padding: 10,
+                        marginLeft: 30,
+                        color: '#00AB65',
+                      }}
+                    >
+                      9800 INR
+                    </Text>
+                  </View>
+                </Surface>
+              </ScrollView>
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </>
   )
 }
@@ -329,6 +309,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     backgroundColor: 'white',
     flexDirection: 'column',
+    height: "100%"
   },
 })
 
