@@ -11,7 +11,6 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
 
-// import NavTab from './bottomNavTab'
 
 const UpcomingSessions = ({ navigation }) => {
   return (

@@ -7,6 +7,8 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import UploadContent from '../Educator/upload_content'
 import Notifications from '../Educator/notifications'
 import StudentAttendance from '../Educator/student_attendance'
+import { createAppContainer } from 'react-navigation'
+
 
 const NavTab = createMaterialBottomTabNavigator(
   {
@@ -66,4 +68,5 @@ const NavTab = createMaterialBottomTabNavigator(
   },
 )
 
-export default NavTab
+const Navigator = createAppContainer(NavTab)
+export default Navigator

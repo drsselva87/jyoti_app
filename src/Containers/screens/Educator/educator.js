@@ -5,14 +5,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
-import NavTab from '../Commons/educator_bottom_tab'
-import { createAppContainer } from 'react-navigation'
-import Dashboard from './dashboard'
-// import NavTab from './bottomNavTab'
-const Navigator = createAppContainer(NavTab)
+import Navigator from '../Commons/educator_bottom_tab'
+
 const Educator = ({ navigation }) => {
-  return <Dashboard
-  />
+  return <Navigator />
 }
 
 const styles = StyleSheet.create({

@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen'
 import NavTab from '../Commons/student_bottom_tab'
 import { createAppContainer } from 'react-navigation'
-// import NavTab from './bottomNavTab'
+
 
 const Navigator = createAppContainer(NavTab)
 
